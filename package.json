@@ -7,12 +7,12 @@
     "build": "next build",
     "start": "next start",
     "lint": "run-p lint:*",
-    "lint:prettier": "prettier --ignore-path .gitignore --check ./app",
-    "lint:eslint": "eslint --ext .js,jsx,.ts,.tsx ./app",
+    "lint:prettier": "prettier --ignore-path .gitignore --check ./src",
+    "lint:eslint": "eslint --ext .js,jsx,.ts,.tsx ./src",
     "lint:tsc": "tsc --noEmit",
     "fix": "run-p fix:*",
-    "fix:prettier": "prettier --ignore-path .gitignore --write ./app",
-    "fix:lint": "eslint --ext .js,jsx,.ts,.tsx --fix ./app"
+    "fix:prettier": "prettier --ignore-path .gitignore --write ./src",
+    "fix:lint": "eslint --ext .js,jsx,.ts,.tsx --fix ./src"
   },
   "dependencies": {
     "hono": "^3.12.6",
