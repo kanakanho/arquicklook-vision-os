@@ -15,6 +15,7 @@
     "fix:lint": "eslint --ext .js,jsx,.ts,.tsx --fix ./app"
   },
   "dependencies": {
+    "hono": "^3.12.6",
     "next": "14.1.0",
     "react": "^18",
     "react-dom": "^18",
