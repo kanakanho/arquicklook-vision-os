@@ -3,10 +3,8 @@
 import { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import Card from './_components/Card';
-import en from './_components/element/en';
-import ja from './_components/element/ja';
+import { getLang, en } from './_components/i18n';
 import { TypeHome } from './_components/types/home';
-import { getLang } from './_components/utils/lang';
 
 const HomeContainer = styled.div``;
 
@@ -39,7 +37,7 @@ const CardContainer = styled.div`
 export default function Home() {
   const [lang, setLang] = useState<TypeHome>(en);
   useEffect(() => {
-    setLang(getLang(en, ja));
+    setLang(getLang());
   }, []);
 
   return (

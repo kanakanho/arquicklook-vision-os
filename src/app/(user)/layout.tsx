@@ -13,7 +13,7 @@ const Header = styled.div`
   color: #eee;
   font-weight: 600;
   font-size: 32px;
-  padding: 10px 0 ;
+  padding: 10px 0;
 `;
 
 export default function RootLayout({ children }: Props) {
