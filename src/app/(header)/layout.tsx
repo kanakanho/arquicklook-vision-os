@@ -10,7 +10,9 @@ export default function RootLayout({ children }: Props) {
   return (
     <html lang='en'>
       <body>
-        <header>ARQuickLook for VisionOS</header>
+        <header>
+          <a href='/'>ARQuickLook for VisionOS</a>
+        </header>
         {children}
       </body>
     </html>

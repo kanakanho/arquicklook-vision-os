@@ -1,21 +1,20 @@
 export type TypeQuestion = {
   title: string;
+  guide: string;
   large: {
-    img: string;
-    text: string;
-  };
-  small: {
     img: string;
     text: string;
   };
 };
 
+export type TypeCard = {
+  name: string;
+  text: string;
+};
+
 export type TypeInput = {
   title: string;
-  card: {
-    name: string;
-    text: string;
-  }[];
+  cards: TypeCard[];
 };
 
 export type TypeUpload = {
