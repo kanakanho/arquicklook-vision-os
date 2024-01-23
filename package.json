@@ -15,10 +15,14 @@
     "fix:lint": "eslint --ext .js,jsx,.ts,.tsx --fix ./src"
   },
   "dependencies": {
+    "@types/firebase": "^3.2.1",
+    "@types/recoil": "^0.0.9",
+    "firebase": "^10.7.2",
     "hono": "^3.12.6",
     "next": "14.1.0",
     "react": "^18",
     "react-dom": "^18",
+    "recoil": "^0.7.7",
     "styled-components": "^6.1.8"
   },
   "devDependencies": {

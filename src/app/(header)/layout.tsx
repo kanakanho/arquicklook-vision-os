@@ -1,6 +1,7 @@
 'use client';
 
 import { ReactNode } from 'react';
+import { RecoilRoot } from 'recoil';
 import styled from 'styled-components';
 
 interface Props {
@@ -20,8 +21,10 @@ export default function RootLayout({ children }: Props) {
   return (
     <html lang='en'>
       <body>
-        <Header>ARQuickLook for VisionOS</Header>
-        {children}
+        <RecoilRoot>
+          <Header>ARQuickLook for VisionOS</Header>
+          {children}
+        </RecoilRoot>
       </body>
     </html>
   );
