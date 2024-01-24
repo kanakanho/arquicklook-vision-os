@@ -48,12 +48,11 @@ const Text = styled.p`
 `;
 
 export const Card: FC<TypeCrad> = ({ img, text, arrow, link }) => {
-  const imgUrl = require(`../../public/${img}`);
   return (
     <FigureContainer>
       <Figure>
         <ImageContainer>
-          <Image src={imgUrl} alt={text} layout='fill' />
+          <Image src={`/${img}`} alt={text} layout='fill' />
         </ImageContainer>
       </Figure>
       <Caption>{text}</Caption>
