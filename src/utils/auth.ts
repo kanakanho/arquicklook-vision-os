@@ -1,12 +1,6 @@
 'use client';
 
-import {
-  GoogleAuthProvider,
-  getAuth,
-  onAuthStateChanged,
-  signInWithRedirect,
-  signOut,
-} from 'firebase/auth';
+import { GoogleAuthProvider, onAuthStateChanged, signInWithRedirect, signOut } from 'firebase/auth';
 import { useEffect, useState } from 'react';
 import { useUserMutators } from '../state/firebaseUserState';
 import { useLoginMutators } from '../state/login';
@@ -33,7 +27,6 @@ export const useIsSigned = (): boolean | undefined => {
 
   useEffect(() => {
     (async () => {
-      const auth = getAuth();
       try {
         onAuthStateChanged(auth, (user) => {
           if (user) {
