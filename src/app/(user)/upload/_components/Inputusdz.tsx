@@ -1,4 +1,3 @@
-import Image from 'next/image';
 import React, { ChangeEvent, FC, useRef, useState } from 'react';
 import { styled } from 'styled-components';
 import { TypeQuestion } from './types/upload';
@@ -42,6 +41,12 @@ const ImageContainer = styled.div`
   }
 `;
 
+const Image = styled.img`
+  width: 100%;
+  height: 100%;
+  object-position: center;
+`;
+
 const Text = styled.div`
   padding: 20px 0;
   font-size: 24px;
@@ -50,7 +55,6 @@ const Text = styled.div`
 const Inputusdz: FC<Props> = ({ setItem, question }) => {
   const [url, setUrl] = useState<string>('');
   let { text } = question.large;
-  let imgUrl = require(`../../../../public/${question.large.img}`);
 
   const usdzInputRef = useRef<HTMLInputElement>(null);
 
@@ -83,7 +87,7 @@ const Inputusdz: FC<Props> = ({ setItem, question }) => {
       <Input onClick={handleUsdzClick}>
         <InpuText>{question.guide}</InpuText>
         <ImageContainer>
-          <Image src={imgUrl} alt={text} layout='fill' objectFit='cover' />
+          <Image src={`/${question.large.img}`} alt={question.large.text} />
         </ImageContainer>
       </Input>
       <Text>{text}</Text>
