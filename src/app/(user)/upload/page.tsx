@@ -5,7 +5,7 @@ import { styled } from 'styled-components';
 import Input from './_components/Input';
 import Inputimage from './_components/Inputimage';
 import Inputusdz from './_components/Inputusdz';
-import { getLang, en } from './_components/i18n/';
+import { getLang, en } from './_components/i18n';
 import { TypeUpload } from './_components/types/upload';
 
 const FormContainer = styled.div`
