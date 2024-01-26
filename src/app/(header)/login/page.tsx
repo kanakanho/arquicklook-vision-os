@@ -1,5 +1,6 @@
 'use client';
 
+import { useRouter } from 'next/navigation';
 import { FC } from 'react';
 import { styled } from 'styled-components';
 import { googleLogin } from '../../../utils/auth';
@@ -18,11 +19,12 @@ const LoginContainer = styled.div`
   border-radius: 20px;
 `;
 
-const Text = styled.div`
+const Text = styled.p`
+  margin: 0;
   font-size: 32px;
 `;
 
-const Icon = styled.div`
+const IconWrapper = styled.div`
   padding: 8px 6px 0px 6px;
   margin: 0 0 0 24px;
   display: inline;
@@ -31,21 +33,22 @@ const Icon = styled.div`
   background-color: #fafafa;
 `;
 
-const page: FC = () => {
-  const Login = async () => {
+const Page: FC = () => {
+  const router = useRouter();
+  const login = async () => {
     await googleLogin()
       .then(() => {
-        location.href = '/upload';
+        router.push('/user/upload');
       })
       .catch(() => {
-        location.href = '/';
+        router.push('/');
       });
   };
 
   return (
-    <LoginContainer onClick={Login}>
+    <LoginContainer onClick={login}>
       <Text>Login With Google</Text>
-      <Icon>
+      <IconWrapper>
         <svg xmlns='http://www.w3.org/2000/svg' width='48' height='48' viewBox='0 0 16 16'>
           <path
             fill='none'
@@ -56,9 +59,9 @@ const page: FC = () => {
             d='m8.75 3.25l4.5 4.5l-4.5 4.5m-6-4.5h10.5'
           />
         </svg>
-      </Icon>
+      </IconWrapper>
     </LoginContainer>
   );
 };
 
-export default page;
+export default Page;
