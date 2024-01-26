@@ -1,4 +1,3 @@
-import Image from 'next/image';
 import Link from 'next/link';
 import { FC } from 'react';
 import styled from 'styled-components';
@@ -19,6 +18,11 @@ const ImageContainer = styled.div`
     width: 300px;
     height: 200px;
   }
+`;
+const Image = styled.img`
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 `;
 
 const Figure = styled.div`
@@ -52,7 +56,7 @@ export const Card: FC<TypeCrad> = ({ img, text, arrow, link }) => {
     <FigureContainer>
       <Figure>
         <ImageContainer>
-          <Image src={`/${img}`} alt={text} layout='fill' />
+          <Image src={`/${img}`} alt={text} />
         </ImageContainer>
       </Figure>
       <Caption>{text}</Caption>
