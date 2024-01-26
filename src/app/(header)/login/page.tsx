@@ -38,7 +38,7 @@ const Page: FC = () => {
   const login = async () => {
     await googleLogin()
       .then(() => {
-        router.push('/user/upload');
+        router.push('/upload');
       })
       .catch(() => {
         router.push('/');
