@@ -16,6 +16,9 @@ const Item = styled.div`
   border: 2px solid #666;
 
   overflow: hidden;
+  &:hover {
+    cursor: pointer;
+  }
 `;
 
 const Image = styled.img`
@@ -31,14 +34,16 @@ const TextContainer = styled.div`
   border: 5px solid rgba(255, 255, 255, 0.5);
 `;
 
-const Name = styled.div`
+const Name = styled.h2`
+  margin: 0;
   font-size: 32px;
   font-weight: 600;
   text-align: center;
   white-space: nowrap;
 `;
 
-const User = styled.div`
+const User = styled.h3`
+  margin: 0;
   font-size: 18px;
   font-weight: 500;
   text-align: center;
@@ -55,12 +60,14 @@ const Items = styled.div`
   }
 `;
 
-const Date = styled.div`
+const Date = styled.p`
+  margin: 0;
   font-size: 16px;
   font-weight: 400;
 `;
 
-const Count = styled.div`
+const Count = styled.p`
+  margin: 0;
   display: flex;
   font-size: 14px;
   font-weight: 300;

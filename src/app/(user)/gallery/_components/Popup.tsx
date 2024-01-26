@@ -7,7 +7,7 @@ type Props = {
   item: TypeGallery;
 };
 
-const Contena = styled.div`
+const PopupContainer = styled.div`
   position: fixed;
   top: 25%;
   left: calc(50vw - 25%);
@@ -77,12 +77,13 @@ const Items = styled.div`
   align-items: center;
 `;
 
-const Date = styled.div`
+const Date = styled.p`
+  margin: 0;
   font-size: 16px;
   font-weight: 400;
 `;
 
-const Count = styled.div`
+const ViewCount = styled.p`
   display: flex;
   font-size: 14px;
   font-weight: 300;
@@ -94,7 +95,7 @@ const Count = styled.div`
 
 const Popup: FC<Props> = ({ item }) => {
   return (
-    <Contena>
+    <PopupContainer>
       <ImageContainer>
         <Link href={item.usdz} rel='ar'>
           <Image src={item.image} alt={item.name} />
@@ -107,7 +108,7 @@ const Popup: FC<Props> = ({ item }) => {
         <Flex />
         <Items>
           <Date>{item.date}</Date>
-          <Count>
+          <ViewCount>
             <svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 20 20'>
               <path
                 fill='currentColor'
@@ -115,10 +116,10 @@ const Popup: FC<Props> = ({ item }) => {
               />
             </svg>
             {item.count}
-          </Count>
+          </ViewCount>
         </Items>
       </Item>
-    </Contena>
+    </PopupContainer>
   );
 };
 

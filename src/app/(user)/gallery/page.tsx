@@ -12,14 +12,10 @@ const CardContainer = styled.div`
   padding: calc(50px + 75px) 0;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  grid-gap: 50px;
+  gap: 50px;
 
   @media screen and (max-width: 1400px) {
     margin: 0 50px;
-  }
-
-  &:hover {
-    cursor: pointer;
   }
 `;
 
@@ -50,16 +46,20 @@ const Gallery: FC = () => {
         setItem(demo[i]);
       }
     }
+    const foundItem = demo.find((item: TypeGallery) => item.id === itemId);
+    if (foundItem) {
+      setItem(foundItem);
+    }
   }, [itemId]);
 
   return (
     <>
-      {isChose ? (
+      {isChose && (
         <>
           <Background onClick={() => setChose(false)} />
           <Popup item={chosenItem} />
         </>
-      ) : null}
+      )}
       <CardContainer>
         {demo.map((item: TypeGallery, index) => {
           return <Card key={index} item={item} choseItem={choseItem} />;
