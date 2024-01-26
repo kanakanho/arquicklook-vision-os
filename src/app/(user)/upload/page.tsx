@@ -12,13 +12,17 @@ const FormContainer = styled.div`
 `;
 
 const Send = styled.div`
-  padding: 20px 0;
+  padding: 30px 0 25px 0;
   font-size: 24px;
   font-weight: 600;
+
+  margin: 0 auto;
+  background-color: #ccc;
 
   &:hover {
     cursor: pointer;
     color: orange;
+    background-color: #333;
   }
 `;
 
