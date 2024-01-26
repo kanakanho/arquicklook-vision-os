@@ -19,6 +19,7 @@ const InputContainer = styled.div`
 `;
 
 const InpuText = styled.p`
+  margin: 0;
   z-index: 1000;
   position: relative;
   top: 240px;
@@ -49,6 +50,7 @@ const Image = styled.img`
 `;
 
 const Text = styled.p`
+  margin: 0;
   padding: 20px 0;
   font-size: 24px;
 `;

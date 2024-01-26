@@ -44,17 +44,8 @@ const Upload: FC = () => {
 
   return (
     <FormContainer>
-      {lang.questions.map((question, index) => {
-        if (index === 0) {
-          return (
-            <InputFile key={index} question={question} setItem={setUsdzUrl} inputFileType='usdz' />
-          );
-        } else if (index === 1) {
-          return (
-            <InputFile key={index} question={question} setItem={setPngUrl} inputFileType='image' />
-          );
-        }
-      })}
+      <InputFile question={lang.questions[0]} setItem={setUsdzUrl} inputFileType='usdz' />
+      <InputFile question={lang.questions[1]} setItem={setPngUrl} inputFileType='image' />
       <h1>{lang.input.title}</h1>
       <Input card={lang.input.cards[0]} setItem={setName} />
       <Input card={lang.input.cards[1]} setItem={setDescription} />
