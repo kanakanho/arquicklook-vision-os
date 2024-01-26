@@ -13,12 +13,3 @@ a {
   color: inherit;
   text-decoration: none;
 }
-
-header {
-  text-align: center;
-  background-color: #000;
-  color: #eee;
-  font-weight: 600;
-  font-size: 32px;
-  padding: 10px 0;
-}

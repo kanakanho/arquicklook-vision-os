@@ -12,10 +12,10 @@ const en: TypeUpload = {
     },
     {
       title: '2. Upload model capture',
-      guide: '+ Upload png file',
+      guide: '+ Upload image',
       large: {
         img: 'send.png',
-        text: 'Upload the preview image of the 3D model. Supported file format is ".png".',
+        text: 'Upload the preview image of the 3D model.',
       },
     },
   ],

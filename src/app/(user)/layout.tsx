@@ -1,6 +1,5 @@
-'use client';
-
 import { ReactNode } from 'react';
+import Header from './_components/Header';
 
 interface Props {
   children: ReactNode;
@@ -10,9 +9,7 @@ export default function RootLayout({ children }: Props) {
   return (
     <html lang='en'>
       <body>
-        <header>
-          <a href='/'>ARQuickLook for VisionOS</a>
-        </header>
+        <Header />
         {children}
       </body>
     </html>

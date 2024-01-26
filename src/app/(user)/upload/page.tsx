@@ -3,8 +3,7 @@
 import { FC, useEffect, useState } from 'react';
 import { styled } from 'styled-components';
 import Input from './_components/Input';
-import Inputimage from './_components/Inputimage';
-import Inputusdz from './_components/Inputusdz';
+import InputFile from './_components/InputFile';
 import { getLang, en } from './_components/i18n';
 import { TypeUpload } from './_components/types/upload';
 
@@ -41,8 +40,17 @@ const Upload: FC = () => {
 
   return (
     <FormContainer>
-      <Inputusdz question={lang.questions[0]} setItem={setUsdzUrl} />
-      <Inputimage question={lang.questions[1]} setItem={setPngUrl} />
+      {lang.questions.map((question, index) => {
+        if (index === 0) {
+          return (
+            <InputFile key={index} question={question} setItem={setUsdzUrl} inputFileType='usdz' />
+          );
+        } else if (index === 1) {
+          return (
+            <InputFile key={index} question={question} setItem={setPngUrl} inputFileType='image' />
+          );
+        }
+      })}
       <h1>{lang.input.title}</h1>
       <Input card={lang.input.cards[0]} setItem={setName} />
       <Input card={lang.input.cards[1]} setItem={setDescription} />

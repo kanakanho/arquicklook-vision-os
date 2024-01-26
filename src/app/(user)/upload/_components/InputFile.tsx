@@ -5,19 +5,20 @@ import { TypeQuestion } from './types/upload';
 type Props = {
   setItem: (item: string) => void;
   question: TypeQuestion;
+  inputFileType: string;
 };
 
 const HiddenInput = styled.input`
   display: none;
 `;
 
-const Input = styled.div`
+const InputContainer = styled.div`
   &:hover {
     cursor: pointer;
   }
 `;
 
-const InpuText = styled.div`
+const InpuText = styled.p`
   z-index: 1000;
   position: relative;
   top: 240px;
@@ -47,14 +48,13 @@ const Image = styled.img`
   object-position: center;
 `;
 
-const Text = styled.div`
+const Text = styled.p`
   padding: 20px 0;
   font-size: 24px;
 `;
-
-const Inputusdz: FC<Props> = ({ setItem, question }) => {
+``;
+const InputFile: FC<Props> = ({ setItem, question, inputFileType }) => {
   const [url, setUrl] = useState<string>('');
-  let { text } = question.large;
 
   const usdzInputRef = useRef<HTMLInputElement>(null);
 
@@ -77,22 +77,32 @@ const Inputusdz: FC<Props> = ({ setItem, question }) => {
   return (
     <>
       <h1>{question.title}</h1>
-      <HiddenInput
-        ref={usdzInputRef}
-        type='file'
-        name='example1'
-        accept='.usdz'
-        onChange={handleUsdzFileChange}
-      />
-      <Input onClick={handleUsdzClick}>
+      {inputFileType === 'usdz' ? (
+        <HiddenInput
+          ref={usdzInputRef}
+          type='file'
+          name='example1'
+          accept='.usdz'
+          onChange={handleUsdzFileChange}
+        />
+      ) : (
+        <HiddenInput
+          ref={usdzInputRef}
+          type='file'
+          name='example'
+          accept='image/*'
+          onChange={handleUsdzFileChange}
+        />
+      )}
+      <InputContainer onClick={handleUsdzClick}>
         <InpuText>{question.guide}</InpuText>
         <ImageContainer>
           <Image src={`/${question.large.img}`} alt={question.large.text} />
         </ImageContainer>
-      </Input>
-      <Text>{text}</Text>
+      </InputContainer>
+      <Text>{question.large.text}</Text>
     </>
   );
 };
 
-export default Inputusdz;
+export default InputFile;
