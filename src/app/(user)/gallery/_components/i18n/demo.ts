@@ -2,7 +2,7 @@ import { TypeGalleryList } from '../types/gallery';
 
 const demo: TypeGalleryList = [
   {
-    id: 1,
+    id: '1',
     image: 'https://pbs.twimg.com/profile_images/1673567713954873344/SQymHa9-_400x400.jpg',
     usdz: 'https://github.com/kanakanho/ar_quick_look/raw/main/usdz/bridge.usdz',
     modelName: 'Model Name',
@@ -12,7 +12,7 @@ const demo: TypeGalleryList = [
     count: 123,
   },
   {
-    id: 2,
+    id: '2',
     image: 'https://pbs.twimg.com/profile_banners/1608313026469314560/1672315193/1500x500',
     usdz: 'https://github.com/kanakanho/ar_quick_look/raw/main/usdz/bridge.usdz',
     modelName: 'すごい長い名前のユーザーvery long user name',
@@ -23,7 +23,7 @@ const demo: TypeGalleryList = [
     count: 123,
   },
   {
-    id: 3,
+    id: '3',
     image: 'https://pbs.twimg.com/media/FpJXppzakAEOO-l?format=jpg&name=4096x4096',
     usdz: 'https://github.com/kanakanho/ar_quick_look/raw/main/usdz/bridge.usdz',
     modelName: 'Model Name',
@@ -34,7 +34,7 @@ const demo: TypeGalleryList = [
     count: 123,
   },
   {
-    id: 4,
+    id: '4',
     image: 'https://pbs.twimg.com/profile_images/1673567713954873344/SQymHa9-_400x400.jpg',
     usdz: 'https://github.com/kanakanho/ar_quick_look/raw/main/usdz/bridge.usdz',
     modelName: 'Model Name',
@@ -44,7 +44,7 @@ const demo: TypeGalleryList = [
     count: 123,
   },
   {
-    id: 5,
+    id: '5',
     image: 'https://pbs.twimg.com/profile_images/1673567713954873344/SQymHa9-_400x400.jpg',
     usdz: 'https://github.com/kanakanho/ar_quick_look/raw/main/usdz/bridge.usdz',
     modelName: 'Model Name',
@@ -54,7 +54,7 @@ const demo: TypeGalleryList = [
     count: 123,
   },
   {
-    id: 6,
+    id: '6',
     image: 'https://pbs.twimg.com/profile_images/1673567713954873344/SQymHa9-_400x400.jpg',
     usdz: 'https://github.com/kanakanho/ar_quick_look/raw/main/usdz/bridge.usdz',
     modelName: 'Model Name',
@@ -64,7 +64,7 @@ const demo: TypeGalleryList = [
     count: 123,
   },
   {
-    id: 7,
+    id: '7',
     image: 'https://pbs.twimg.com/profile_images/1673567713954873344/SQymHa9-_400x400.jpg',
     usdz: 'https://github.com/kanakanho/ar_quick_look/raw/main/usdz/bridge.usdz',
     modelName: 'Model Name',
@@ -74,7 +74,7 @@ const demo: TypeGalleryList = [
     count: 123,
   },
   {
-    id: 8,
+    id: '8',
     image: 'https://pbs.twimg.com/profile_images/1673567713954873344/SQymHa9-_400x400.jpg',
     usdz: 'https://github.com/kanakanho/ar_quick_look/raw/main/usdz/bridge.usdz',
     modelName: 'Model Name',
@@ -84,7 +84,7 @@ const demo: TypeGalleryList = [
     count: 123,
   },
   {
-    id: 9,
+    id: '9',
     image: 'https://pbs.twimg.com/profile_images/1673567713954873344/SQymHa9-_400x400.jpg',
     usdz: 'https://github.com/kanakanho/ar_quick_look/raw/main/usdz/bridge.usdz',
     modelName: 'Model Name',
@@ -94,7 +94,7 @@ const demo: TypeGalleryList = [
     count: 123,
   },
   {
-    id: 10,
+    id: '10',
     image: 'https://pbs.twimg.com/profile_images/1673567713954873344/SQymHa9-_400x400.jpg',
     usdz: 'https://github.com/kanakanho/ar_quick_look/raw/main/usdz/bridge.usdz',
     modelName: 'Model Name',
@@ -104,7 +104,7 @@ const demo: TypeGalleryList = [
     count: 123,
   },
   {
-    id: 11,
+    id: '11',
     image: 'https://pbs.twimg.com/profile_images/1673567713954873344/SQymHa9-_400x400.jpg',
     usdz: 'https://github.com/kanakanho/ar_quick_look/raw/main/usdz/bridge.usdz',
     modelName: 'Model Name',
@@ -114,7 +114,7 @@ const demo: TypeGalleryList = [
     count: 123,
   },
   {
-    id: 12,
+    id: '12',
     image: 'https://pbs.twimg.com/profile_images/1673567713954873344/SQymHa9-_400x400.jpg',
     usdz: 'https://github.com/kanakanho/ar_quick_look/raw/main/usdz/bridge.usdz',
     modelName: 'Model Name',
@@ -124,7 +124,7 @@ const demo: TypeGalleryList = [
     count: 123,
   },
   {
-    id: 13,
+    id: '13',
     image: 'https://pbs.twimg.com/profile_images/1673567713954873344/SQymHa9-_400x400.jpg',
     usdz: 'https://github.com/kanakanho/ar_quick_look/raw/main/usdz/bridge.usdz',
     modelName: 'Model Name',
@@ -134,7 +134,7 @@ const demo: TypeGalleryList = [
     count: 123,
   },
   {
-    id: 14,
+    id: '14',
     image: 'https://pbs.twimg.com/profile_images/1673567713954873344/SQymHa9-_400x400.jpg',
     usdz: 'https://github.com/kanakanho/ar_quick_look/raw/main/usdz/bridge.usdz',
     modelName: 'Model Name',
@@ -144,7 +144,7 @@ const demo: TypeGalleryList = [
     count: 123,
   },
   {
-    id: 15,
+    id: '15',
     image: 'https://pbs.twimg.com/profile_images/1673567713954873344/SQymHa9-_400x400.jpg',
     usdz: 'https://github.com/kanakanho/ar_quick_look/raw/main/usdz/bridge.usdz',
     modelName: 'Model Name',
@@ -154,7 +154,7 @@ const demo: TypeGalleryList = [
     count: 123,
   },
   {
-    id: 16,
+    id: '16',
     image: 'https://pbs.twimg.com/profile_images/1673567713954873344/SQymHa9-_400x400.jpg',
     usdz: 'https://github.com/kanakanho/ar_quick_look/raw/main/usdz/bridge.usdz',
     modelName: 'Model Name',
@@ -164,7 +164,7 @@ const demo: TypeGalleryList = [
     count: 123,
   },
   {
-    id: 17,
+    id: '17',
     image: 'https://pbs.twimg.com/profile_images/1673567713954873344/SQymHa9-_400x400.jpg',
     usdz: 'https://github.com/kanakanho/ar_quick_look/raw/main/usdz/bridge.usdz',
     modelName: 'Model Name',
@@ -174,7 +174,7 @@ const demo: TypeGalleryList = [
     count: 123,
   },
   {
-    id: 18,
+    id: '18',
     image: 'https://pbs.twimg.com/profile_images/1673567713954873344/SQymHa9-_400x400.jpg',
     usdz: 'https://github.com/kanakanho/ar_quick_look/raw/main/usdz/bridge.usdz',
     modelName: 'Model Name',
@@ -184,7 +184,7 @@ const demo: TypeGalleryList = [
     count: 123,
   },
   {
-    id: 19,
+    id: '19',
     image: 'https://pbs.twimg.com/profile_images/1673567713954873344/SQymHa9-_400x400.jpg',
     usdz: 'https://github.com/kanakanho/ar_quick_look/raw/main/usdz/bridge.usdz',
     modelName: 'Model Name',
@@ -194,7 +194,7 @@ const demo: TypeGalleryList = [
     count: 123,
   },
   {
-    id: 20,
+    id: '20',
     image: 'https://pbs.twimg.com/profile_images/1673567713954873344/SQymHa9-_400x400.jpg',
     usdz: 'https://github.com/kanakanho/ar_quick_look/raw/main/usdz/bridge.usdz',
     modelName: 'Model Name',
@@ -204,7 +204,7 @@ const demo: TypeGalleryList = [
     count: 123,
   },
   {
-    id: 21,
+    id: '21',
     image: 'https://pbs.twimg.com/profile_images/1673567713954873344/SQymHa9-_400x400.jpg',
     usdz: 'https://github.com/kanakanho/ar_quick_look/raw/main/usdz/bridge.usdz',
     modelName: 'Model Name',
@@ -214,7 +214,7 @@ const demo: TypeGalleryList = [
     count: 123,
   },
   {
-    id: 22,
+    id: '22',
     image: 'https://pbs.twimg.com/profile_images/1673567713954873344/SQymHa9-_400x400.jpg',
     usdz: 'https://github.com/kanakanho/ar_quick_look/raw/main/usdz/bridge.usdz',
     modelName: 'Model Name',
@@ -224,7 +224,7 @@ const demo: TypeGalleryList = [
     count: 123,
   },
   {
-    id: 23,
+    id: '23',
     image: 'https://pbs.twimg.com/profile_images/1673567713954873344/SQymHa9-_400x400.jpg',
     usdz: 'https://github.com/kanakanho/ar_quick_look/raw/main/usdz/bridge.usdz',
     modelName: 'Model Name',
@@ -234,7 +234,7 @@ const demo: TypeGalleryList = [
     count: 123,
   },
   {
-    id: 24,
+    id: '24',
     image: 'https://pbs.twimg.com/profile_images/1673567713954873344/SQymHa9-_400x400.jpg',
     usdz: 'https://github.com/kanakanho/ar_quick_look/raw/main/usdz/bridge.usdz',
     modelName: 'Model Name',
@@ -244,7 +244,7 @@ const demo: TypeGalleryList = [
     count: 123,
   },
   {
-    id: 25,
+    id: '25',
     image: 'https://pbs.twimg.com/profile_images/1673567713954873344/SQymHa9-_400x400.jpg',
     usdz: 'https://github.com/kanakanho/ar_quick_look/raw/main/usdz/bridge.usdz',
     modelName: 'Model Name',
@@ -254,7 +254,7 @@ const demo: TypeGalleryList = [
     count: 123,
   },
   {
-    id: 26,
+    id: '26',
     image: 'https://pbs.twimg.com/profile_images/1673567713954873344/SQymHa9-_400x400.jpg',
     usdz: 'https://github.com/kanakanho/ar_quick_look/raw/main/usdz/bridge.usdz',
     modelName: 'Model Name',
@@ -264,7 +264,7 @@ const demo: TypeGalleryList = [
     count: 123,
   },
   {
-    id: 27,
+    id: '27',
     image: 'https://pbs.twimg.com/profile_images/1673567713954873344/SQymHa9-_400x400.jpg',
     usdz: 'https://github.com/kanakanho/ar_quick_look/raw/main/usdz/bridge.usdz',
     modelName: 'Model Name',
@@ -274,7 +274,7 @@ const demo: TypeGalleryList = [
     count: 123,
   },
   {
-    id: 28,
+    id: '28',
     image: 'https://pbs.twimg.com/profile_images/1673567713954873344/SQymHa9-_400x400.jpg',
     usdz: 'https://github.com/kanakanho/ar_quick_look/raw/main/usdz/bridge.usdz',
     modelName: 'Model Name',
@@ -284,7 +284,7 @@ const demo: TypeGalleryList = [
     count: 123,
   },
   {
-    id: 29,
+    id: '29',
     image: 'https://pbs.twimg.com/profile_images/1673567713954873344/SQymHa9-_400x400.jpg',
     usdz: 'https://github.com/kanakanho/ar_quick_look/raw/main/usdz/bridge.usdz',
     modelName: 'Model Name',
@@ -294,7 +294,7 @@ const demo: TypeGalleryList = [
     count: 123,
   },
   {
-    id: 30,
+    id: '30',
     image: 'https://pbs.twimg.com/profile_images/1673567713954873344/SQymHa9-_400x400.jpg',
     usdz: 'https://github.com/kanakanho/ar_quick_look/raw/main/usdz/bridge.usdz',
     modelName: 'Model Name',
@@ -304,7 +304,7 @@ const demo: TypeGalleryList = [
     count: 123,
   },
   {
-    id: 31,
+    id: '31',
     image: 'https://pbs.twimg.com/profile_images/1673567713954873344/SQymHa9-_400x400.jpg',
     usdz: 'https://github.com/kanakanho/ar_quick_look/raw/main/usdz/bridge.usdz',
     modelName: 'Model Name',
@@ -314,7 +314,7 @@ const demo: TypeGalleryList = [
     count: 123,
   },
   {
-    id: 32,
+    id: '32',
     image: 'https://pbs.twimg.com/profile_images/1673567713954873344/SQymHa9-_400x400.jpg',
     usdz: 'https://github.com/kanakanho/ar_quick_look/raw/main/usdz/bridge.usdz',
     modelName: 'Model Name',
@@ -324,7 +324,7 @@ const demo: TypeGalleryList = [
     count: 123,
   },
   {
-    id: 33,
+    id: '33',
     image: 'https://pbs.twimg.com/profile_images/1673567713954873344/SQymHa9-_400x400.jpg',
     usdz: 'https://github.com/kanakanho/ar_quick_look/raw/main/usdz/bridge.usdz',
     modelName: 'Model Name',
@@ -334,7 +334,7 @@ const demo: TypeGalleryList = [
     count: 123,
   },
   {
-    id: 34,
+    id: '34',
     image: 'https://pbs.twimg.com/profile_images/1673567713954873344/SQymHa9-_400x400.jpg',
     usdz: 'https://github.com/kanakanho/ar_quick_look/raw/main/usdz/bridge.usdz',
     modelName: 'Model Name',
@@ -344,7 +344,7 @@ const demo: TypeGalleryList = [
     count: 123,
   },
   {
-    id: 35,
+    id: '35',
     image: 'https://pbs.twimg.com/profile_images/1673567713954873344/SQymHa9-_400x400.jpg',
     usdz: 'https://github.com/kanakanho/ar_quick_look/raw/main/usdz/bridge.usdz',
     modelName: 'Model Name',

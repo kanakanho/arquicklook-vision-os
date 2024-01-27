@@ -32,9 +32,9 @@ const Background = styled.div`
 
 const Gallery: FC = () => {
   const [isChose, setChose] = useState<boolean>(false);
-  const [itemId, setId] = useState<number>(0);
+  const [itemId, setId] = useState<string>('');
   const [chosenItem, setItem] = useState<SolidObject>(demo[0]);
-  const choseItem = (id: number) => {
+  const choseItem = (id: string) => {
     setId(id);
     setChose(true);
   };

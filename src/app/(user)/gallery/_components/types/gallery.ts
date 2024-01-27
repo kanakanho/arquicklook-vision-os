@@ -1,3 +1,3 @@
-import { solidObject } from '@/src/types/solidObject';
+import { SolidObject } from '@/src/types/SolidObject';
 
-export type TypeGalleryList = solidObject[];
+export type TypeGalleryList = SolidObject[];

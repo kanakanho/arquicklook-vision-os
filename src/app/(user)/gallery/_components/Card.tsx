@@ -5,7 +5,7 @@ import { SolidObject } from '@/src/types/SolidObject';
 type Props = {
   item: SolidObject;
   // eslint-disable-next-line no-unused-vars
-  choseItem: (id: number) => void;
+  choseItem: (id: string) => void;
 };
 
 const Item = styled.div`
