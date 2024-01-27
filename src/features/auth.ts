@@ -14,7 +14,7 @@ export const googleLogin = async (): Promise<void> => {
 };
 
 export const logout = async (): Promise<void> => {
-  signOut(auth).catch((error) => {  
+  signOut(auth).catch((error) => {
     console.error(error);
   });
   window.location.reload();
@@ -26,21 +26,15 @@ export const useIsSigned = (): boolean | undefined => {
   const { setLoginPermissionState } = useLoginMutators();
 
   useEffect(() => {
-    (async () => {
-      try {
-        onAuthStateChanged(auth, (user) => {
-          if (user) {
-            setIsLogin(true);
-            setUserState(user);
-            setLoginPermissionState(true);
-          } else {
-            setIsLogin(false);
-          }
-        });
-      } catch (err) {
-        console.error(err);
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        setIsLogin(true);
+        setUserState(user);
+        setLoginPermissionState(true);
+      } else {
+        setIsLogin(false);
       }
-    })();
+    });
   }, [isLogin, setUserState, setLoginPermissionState]);
 
   return isLogin;
