@@ -28,7 +28,8 @@ const demo: TypeGalleryList = [
     usdz: 'https://github.com/kanakanho/ar_quick_look/raw/main/usdz/bridge.usdz',
     modelName: 'Model Name',
     user: 'Name',
-    description: 'descriptiondescriptiondescription descriptiondescriptiondescriptiondescription descriptiondescriptiondescriptiondescription descriptiondescriptiondescriptiondescription descriptiondescriptiondescriptiondescriptiondescription descriptiondescriptiondescriptiondescription descriptiondescriptiondescriptiondescriptiondescription',
+    description:
+      'descriptiondescriptiondescription descriptiondescriptiondescriptiondescription descriptiondescriptiondescriptiondescription descriptiondescriptiondescriptiondescription descriptiondescriptiondescriptiondescriptiondescription descriptiondescriptiondescriptiondescription descriptiondescriptiondescriptiondescriptiondescription',
     date: new Date('2021-01-01'),
     count: 123,
   },

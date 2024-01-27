@@ -1,5 +1,5 @@
-export type solidObject = {
-  id: number;
+export type SolidObject = {
+  id: string;
   image: string;
   usdz: string;
   modelName: string;
@@ -9,8 +9,8 @@ export type solidObject = {
   count: number;
 };
 
-export const demoData: solidObject = {
-  id: 1,
+export const demoData: SolidObject = {
+  id: 'e8cfddd2-8d60-4153-8c51-16526dda8118',
   image: 'https://github.com/kanakanho/ar_quick_look/blob/main/usdz/bridge.png?raw=true',
   usdz: 'https://github.com/kanakanho/ar_quick_look/raw/main/usdz/bridge.usdz',
   modelName: 'name1',

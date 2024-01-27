@@ -1,9 +1,9 @@
 import { FC } from 'react';
 import { styled } from 'styled-components';
-import { solidObject } from '@/src/types/solidObject';
+import { SolidObject } from '@/src/types/SolidObject';
 
 type Props = {
-  item: solidObject;
+  item: SolidObject;
   // eslint-disable-next-line no-unused-vars
   choseItem: (id: number) => void;
 };

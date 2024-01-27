@@ -1,10 +1,10 @@
 import Link from 'next/link';
 import { FC } from 'react';
 import { styled } from 'styled-components';
-import { solidObject } from '@/src/types/solidObject';
+import { SolidObject } from '@/src/types/SolidObject';
 
 type Props = {
-  item: solidObject;
+  item: SolidObject;
 };
 
 const PopupContainer = styled.div`
