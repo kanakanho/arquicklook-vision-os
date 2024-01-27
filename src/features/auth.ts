@@ -4,7 +4,7 @@ import { GoogleAuthProvider, onAuthStateChanged, signInWithRedirect, signOut } f
 import { useEffect, useState } from 'react';
 import { useUserMutators } from '../state/firebaseUserState';
 import { useLoginMutators } from '../state/login';
-import { auth } from './firebase';
+import { auth } from '../utils/firebase';
 
 export const googleLogin = async (): Promise<void> => {
   const provider = new GoogleAuthProvider();
@@ -14,7 +14,7 @@ export const googleLogin = async (): Promise<void> => {
 };
 
 export const logout = async (): Promise<void> => {
-  signOut(auth).catch((error) => {
+  signOut(auth).catch((error) => {  
     console.error(error);
   });
   window.location.reload();

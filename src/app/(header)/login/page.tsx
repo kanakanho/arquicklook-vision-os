@@ -3,7 +3,7 @@
 import { useRouter } from 'next/navigation';
 import { FC } from 'react';
 import { styled } from 'styled-components';
-import { googleLogin } from '../../../utils/auth';
+import { googleLogin } from '@/src/features/auth';
 
 const LoginContainer = styled.div`
   margin: 25% auto;
@@ -36,13 +36,12 @@ const IconWrapper = styled.div`
 const Page: FC = () => {
   const router = useRouter();
   const login = async () => {
-    await googleLogin()
-      .then(() => {
-        router.push('/upload');
-      })
-      .catch(() => {
-        router.push('/');
-      });
+    try {
+      await googleLogin();
+      router.push('/upload');
+    } catch {
+      router.push('/');
+    }
   };
 
   return (
