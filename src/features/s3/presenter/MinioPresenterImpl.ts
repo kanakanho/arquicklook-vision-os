@@ -43,7 +43,7 @@ export class MinioPresenterImpl implements MinioPresenter {
   }
 
   async uploadFile(file: File): Promise<string> {
-    const fileName = `${uuidv4().toString()}${file.name.replace(/.*(\..*)/, '$1')}`;
+    const fileName = `${uuidv4().toString()}${this.getExtensionFromName(file.name)}`;
     const bucketName = process.env.NEXT_PUBLIC_BUCKET_NAME ?? '';
 
     const uploadFilePromise = this.client.uploadFile(bucketName, fileName, file);
@@ -55,5 +55,9 @@ export class MinioPresenterImpl implements MinioPresenter {
 
   private changeToServerURL(bucketName: string, contentKey: string): string {
     return `${process.env.NEXT_PUBLIC_MINIO_ENDPOINT}${bucketName}/${contentKey}`;
+  }
+
+  private getExtensionFromName(fileName: string): string {
+    return fileName.replace(/.*(\..*)/, '$1');
   }
 }
