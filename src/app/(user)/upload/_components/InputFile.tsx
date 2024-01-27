@@ -1,5 +1,7 @@
 import React, { ChangeEvent, FC, useRef, useState } from 'react';
 import { styled } from 'styled-components';
+import { MinioClient } from '../../../api/[[...route]]/features/s3/api/MinioClient';
+import { MinioPresenterImpl } from '../../../api/[[...route]]/features/s3/presenter/MinioPresenterImpl';
 import { TypeQuestion } from './types/upload';
 
 type Props = {
@@ -78,6 +80,14 @@ const InputFile: FC<Props> = ({ setItem, question, inputFileType }) => {
     ) {
       // eslint-disable-next-line no-console
       console.log(`File name: ${file.name}, type: ${file.type}`);
+
+      const s3Client = new MinioPresenterImpl();
+      const promise = s3Client.uploadFile(file)
+      promise.then((result) => {
+        // eslint-disable-next-line no-console
+        console.log(result)
+      })
+
       setUrl(file.name);
       setItem(url);
       setIsComplete(true);
