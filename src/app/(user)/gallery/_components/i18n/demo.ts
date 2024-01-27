@@ -18,7 +18,7 @@ const demo: TypeGalleryList = [
     modelName: 'すごい長い名前のユーザーvery long user name',
     user: 'Name',
     description:
-      'けっこう長めの説明がだらだらと書かれているときのテスト表示をしたいので、長い文章。',
+      'けっこう長めの説明がだらだらと書かれているときのテスト表示をしたいので、長い文章。けっこう長めの説明がだらだらと書かれているときのテスト表示をしたいので、長い文章。けっこう長めの説明がだらだらと書かれているときのテスト表示をしたいので、長い文章。けっこう長めの説明がだらだらと書かれているときのテスト表示をしたいので、長い文章。けっこう長めの説明がだらだらと書かれているときのテスト表示をしたいので、長い文章。けっこう長めの説明がだらだらと書かれているときのテスト表示をしたいので、長い文章。けっこう長めの説明がだらだらと書かれているときのテスト表示をしたいので、長い文章。けっこう長めの説明がだらだらと書かれているときのテスト表示をしたいので、長い文章。',
     date: new Date('2021-01-01'),
     count: 123,
   },
@@ -28,7 +28,7 @@ const demo: TypeGalleryList = [
     usdz: 'https://github.com/kanakanho/ar_quick_look/raw/main/usdz/bridge.usdz',
     modelName: 'Model Name',
     user: 'Name',
-    description: 'description',
+    description: 'descriptiondescriptiondescription descriptiondescriptiondescriptiondescription descriptiondescriptiondescriptiondescription descriptiondescriptiondescriptiondescription descriptiondescriptiondescriptiondescriptiondescription descriptiondescriptiondescriptiondescription descriptiondescriptiondescriptiondescriptiondescription',
     date: new Date('2021-01-01'),
     count: 123,
   },

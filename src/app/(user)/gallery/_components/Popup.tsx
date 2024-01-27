@@ -10,9 +10,9 @@ type Props = {
 const PopupContainer = styled.div`
   position: fixed;
   top: 25%;
-  left: calc(50vw - 25%);
+  left: calc(50vw - 30%);
   z-index: 9999;
-  width: 50%;
+  width: 60%;
   height: 50%;
   background-color: rgba(255, 255, 255, 0.8);
   border-radius: 20px;
@@ -23,29 +23,28 @@ const PopupContainer = styled.div`
 `;
 
 const ImageContainer = styled.div`
-  width: 100%;
-  height: 100%;
   overflow: hidden;
 
   border-radius: 20px 0 0 20px;
 `;
 
 const Image = styled.img`
-  padding: 10%;
-  width: 80%;
-  height: 80%;
+  width: 100%;
+  height: 100%;
   object-fit: contain;
   background-color: rgba(255, 255, 255, 0.8);
 `;
 
 const Item = styled.div`
-  padding: 7%;
+  padding: 12px;
 
   display: flex;
   flex-direction: column;
 
   background-color: rgba(128, 128, 128, 0.2);
   border-radius: 0 20px 20px 0;
+
+  overflow: scroll;
 `;
 
 const Name = styled.div`
@@ -65,9 +64,10 @@ const Description = styled.div`
 
   font-size: 16px;
   font-weight: 400;
+  overflow-wrap: break-word;
 `;
 
-const Flex = styled.div`
+const Spacer = styled.div`
   flex: 1 1;
 `;
 
@@ -106,7 +106,7 @@ const Popup: FC<Props> = ({ item }) => {
         <Name>{item.modelName}</Name>
         <User>{item.user}</User>
         <Description>{item.description}</Description>
-        <Flex />
+        <Spacer />
         <Items>
           <Date>{date}</Date>
           <ViewCount>

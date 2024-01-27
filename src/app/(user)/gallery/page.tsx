@@ -9,7 +9,7 @@ import { solidObject } from '@/src/types/solidObject';
 
 const CardContainer = styled.div`
   margin: 0 10%;
-  padding: calc(50px + 75px) 0;
+  padding: 75px 0;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 50px;
@@ -24,8 +24,7 @@ const Background = styled.div`
   top: 0;
   left: 0;
   width: 100%;
-  margin: 70px 0 0 0;
-  height: calc(100% - 70px);
+  margin-top: 70px;
 
   background-color: rgba(255, 255, 255, 0.5);
   z-index: 1;
@@ -61,8 +60,8 @@ const Gallery: FC = () => {
         </>
       )}
       <CardContainer>
-        {demo.map((item: solidObject, index) => {
-          return <Card key={index} item={item} choseItem={choseItem} />;
+        {demo.map((item: solidObject) => {
+          return <Card key={item.id} item={item} choseItem={choseItem} />;
         })}
       </CardContainer>
     </>

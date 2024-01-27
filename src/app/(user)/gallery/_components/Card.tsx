@@ -21,7 +21,7 @@ const Item = styled.div`
   }
 `;
 
-const Image = styled.img`
+const CardThumbnail = styled.img`
   width: auto;
   height: 400px;
   object-fit: cover;
@@ -32,9 +32,10 @@ const TextContainer = styled.div`
   background-color: #ddd;
   border-radius: 0 0 50px 50px;
   border: 5px solid rgba(255, 255, 255, 0.5);
+  flex: 1;
 `;
 
-const Name = styled.h2`
+const ModelName = styled.h2`
   margin: 0;
   font-size: 32px;
   font-weight: 600;
@@ -42,14 +43,14 @@ const Name = styled.h2`
   white-space: nowrap;
 `;
 
-const User = styled.h3`
+const UserName = styled.h3`
   margin: 0;
   font-size: 18px;
   font-weight: 500;
   text-align: center;
 `;
 
-const Items = styled.div`
+const AdditionalInfo = styled.div`
   padding: 10px 25px 0 25px;
   display: flex;
   justify-content: space-between;
@@ -60,30 +61,36 @@ const Items = styled.div`
   }
 `;
 
-const Date = styled.p`
+const DateText = styled.p`
   margin: 0;
   font-size: 16px;
   font-weight: 400;
 `;
 
-const Count = styled.p`
+const ViewCount = styled.p`
   margin: 0;
   display: flex;
   font-size: 14px;
   font-weight: 300;
+  .svg {
+    vertical-align: bottom;
+  }
+  .text {
+    line-height: 10px;
+  }
 `;
 
 const Card: FC<Props> = ({ item, choseItem }) => {
   const date = item.date.toLocaleDateString();
   return (
     <Item onClick={() => choseItem(item.id)}>
-      <Image src={item.image} alt={item.modelName} />
+      <CardThumbnail src={item.image} alt={item.modelName} />
       <TextContainer>
-        <Name>{item.modelName}</Name>
-        <User>{item.user}</User>
-        <Items>
-          <Date>{date}</Date>
-          <Count>
+        <ModelName>{item.modelName}</ModelName>
+        <UserName>{item.user}</UserName>
+        <AdditionalInfo>
+          <DateText>{date}</DateText>
+          <ViewCount>
             <svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 20 20'>
               <path
                 fill='currentColor'
@@ -91,8 +98,8 @@ const Card: FC<Props> = ({ item, choseItem }) => {
               />
             </svg>
             {item.count}
-          </Count>
-        </Items>
+          </ViewCount>
+        </AdditionalInfo>
       </TextContainer>
     </Item>
   );
