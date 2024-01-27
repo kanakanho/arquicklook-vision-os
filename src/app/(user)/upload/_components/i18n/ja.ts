@@ -5,18 +5,16 @@ const ja: TypeUpload = {
     {
       title: '1. 3Dモデルをアップロード',
       guide: '+ usdzファイルをアップロード',
-      large: {
-        img: 'send.png',
-        text: '3Dモデルをアップロードしてください。対応ファイル形式は「.usdz」です。',
-      },
+      complete: 'アップロード完了',
+      img: 'send.png',
+      text: '.usdz形式の3Dモデルをアップロードしてください。',
     },
     {
       title: '2. モデルのキャプチャーをアップロード',
       guide: '+ 画像ファイルをアップロード',
-      large: {
-        img: 'send.png',
-        text: '3Dモデルのプレビュー画像をアップロードしてください。',
-      },
+      complete: 'アップロード完了',
+      img: 'send.png',
+      text: '3Dモデルのプレビュー画像をアップロードしてください。',
     },
   ],
   input: {

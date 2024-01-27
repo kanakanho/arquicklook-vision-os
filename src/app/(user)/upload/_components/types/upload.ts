@@ -1,10 +1,9 @@
 export type TypeQuestion = {
   title: string;
   guide: string;
-  large: {
-    img: string;
-    text: string;
-  };
+  img: string;
+  text: string;
+  complete: string;
 };
 
 export type TypeCard = {
