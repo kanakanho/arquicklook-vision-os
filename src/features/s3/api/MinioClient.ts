@@ -51,7 +51,7 @@ export class MinioClient {
   }
 
   async createBucket(bucketName: string) {
-    const data = await this.client.send(
+    await this.client.send(
       new CreateBucketCommand({
         Bucket: bucketName,
       }),

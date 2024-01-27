@@ -1,6 +1,6 @@
 import { Hono } from 'hono';
 import { handle } from 'hono/vercel';
-import { MinioClient } from './features/s3/api/MinioClient';
+import { MinioClient } from '../../../features/s3/api/MinioClient';
 
 export const runtime = 'edge';
 

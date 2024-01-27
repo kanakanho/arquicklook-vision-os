@@ -1,7 +1,6 @@
 import React, { ChangeEvent, FC, useRef, useState } from 'react';
 import { styled } from 'styled-components';
-import { MinioClient } from '../../../api/[[...route]]/features/s3/api/MinioClient';
-import { MinioPresenterImpl } from '../../../api/[[...route]]/features/s3/presenter/MinioPresenterImpl';
+import { MinioPresenterImpl } from '../../../../features/s3/presenter/MinioPresenterImpl';
 import { TypeQuestion } from './types/upload';
 
 type Props = {
