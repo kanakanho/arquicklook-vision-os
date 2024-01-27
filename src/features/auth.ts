@@ -8,8 +8,15 @@ import { auth } from '../utils/firebase';
 
 export const googleLogin = async (): Promise<void> => {
   const provider = new GoogleAuthProvider();
-  signInWithRedirect(auth, provider).catch((error) => {
-    console.error(error);
+  new Promise<void>((resolve, reject) => {
+    signInWithRedirect(auth, provider)
+      .then(() => {
+        resolve();
+      })
+      .catch((error) => {
+        console.error(error);
+        reject();
+      });
   });
 };
 
