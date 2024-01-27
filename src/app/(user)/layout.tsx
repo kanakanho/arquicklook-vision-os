@@ -1,28 +1,48 @@
-'use client';
-
+import { Metadata } from 'next';
 import { ReactNode } from 'react';
-import styled from 'styled-components';
 
 interface Props {
   children: ReactNode;
 }
 
-const Header = styled.div`
-  text-align: center;
-  background-color: #000;
-  color: #eee;
-  font-weight: 600;
-  font-size: 32px;
-  padding: 10px 0;
-`;
+const siteName = 'AR Quick Look for VisionPro';
+const description = 'This site is a demo of AR Quick Look for VisionPro';
+const url = 'https://arquicklook-vision-os.vercel.app/';
+
+export const metadata: Metadata = {
+  title: siteName,
+  description: description,
+  applicationName: siteName,
+  authors: [
+    {
+      name: 'kanakanho',
+      url: 'https://github.com/kanakanho',
+    },
+    {
+      name: 'harutiro',
+      url: 'https://github.com/harutiro',
+    },
+  ],
+  openGraph: {
+    title: siteName,
+    description,
+    url,
+    siteName,
+    locale: 'ja_JP',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary',
+    title: siteName,
+    description,
+    site: '@Shiba_ao_',
+  },
+};
 
 export default function RootLayout({ children }: Props) {
   return (
     <html lang='en'>
-      <body>
-        <Header>ARQuickLook for VisionOS</Header>
-        {children}
-      </body>
+      <body>{children}</body>
     </html>
   );
 }
