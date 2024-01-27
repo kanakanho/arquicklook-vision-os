@@ -1,10 +1,10 @@
 import Link from 'next/link';
 import { FC } from 'react';
 import { styled } from 'styled-components';
-import { TypeGallery } from './types/gallery';
+import { solidObject } from '@/src/types/solidObject';
 
 type Props = {
-  item: TypeGallery;
+  item: solidObject;
 };
 
 const PopupContainer = styled.div`
@@ -94,20 +94,21 @@ const ViewCount = styled.p`
 `;
 
 const Popup: FC<Props> = ({ item }) => {
+  const date = item.date.toLocaleDateString();
   return (
     <PopupContainer>
       <ImageContainer>
         <Link href={item.usdz} rel='ar'>
-          <Image src={item.image} alt={item.name} />
+          <Image src={item.image} alt={item.user} />
         </Link>
       </ImageContainer>
       <Item>
         <Name>{item.modelName}</Name>
-        <User>{item.name}</User>
+        <User>{item.user}</User>
         <Description>{item.description}</Description>
         <Flex />
         <Items>
-          <Date>{item.date}</Date>
+          <Date>{date}</Date>
           <ViewCount>
             <svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 20 20'>
               <path

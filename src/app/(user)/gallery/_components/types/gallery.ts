@@ -1,12 +1,3 @@
-export type TypeGallery = {
-  id: number;
-  image: string;
-  usdz: string;
-  modelName: string;
-  name: string;
-  description: string;
-  date: string;
-  count: number;
-};
+import { solidObject } from '@/src/types/solidObject';
 
-export type TypeGalleryList = TypeGallery[];
+export type TypeGalleryList = solidObject[];

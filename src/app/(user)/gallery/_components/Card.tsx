@@ -1,9 +1,9 @@
 import { FC } from 'react';
 import { styled } from 'styled-components';
-import { TypeGallery } from './types/gallery';
+import { solidObject } from '@/src/types/solidObject';
 
 type Props = {
-  item: TypeGallery;
+  item: solidObject;
   // eslint-disable-next-line no-unused-vars
   choseItem: (id: number) => void;
 };
@@ -74,14 +74,15 @@ const Count = styled.p`
 `;
 
 const Card: FC<Props> = ({ item, choseItem }) => {
+  const date = item.date.toLocaleDateString();
   return (
     <Item onClick={() => choseItem(item.id)}>
       <Image src={item.image} alt={item.modelName} />
       <TextContainer>
         <Name>{item.modelName}</Name>
-        <User>{item.name}</User>
+        <User>{item.user}</User>
         <Items>
-          <Date>{item.date}</Date>
+          <Date>{date}</Date>
           <Count>
             <svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 20 20'>
               <path

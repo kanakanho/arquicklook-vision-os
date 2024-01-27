@@ -5,7 +5,7 @@ import { styled } from 'styled-components';
 import Card from './_components/Card';
 import Popup from './_components/Popup';
 import demo from './_components/i18n/demo';
-import { TypeGallery } from './_components/types/gallery';
+import { solidObject } from '@/src/types/solidObject';
 
 const CardContainer = styled.div`
   margin: 0 10%;
@@ -34,7 +34,7 @@ const Background = styled.div`
 const Gallery: FC = () => {
   const [isChose, setChose] = useState<boolean>(false);
   const [itemId, setId] = useState<number>(0);
-  const [chosenItem, setItem] = useState<TypeGallery>(demo[0]);
+  const [chosenItem, setItem] = useState<solidObject>(demo[0]);
   const choseItem = (id: number) => {
     setId(id);
     setChose(true);
@@ -46,7 +46,7 @@ const Gallery: FC = () => {
         setItem(demo[i]);
       }
     }
-    const foundItem = demo.find((item: TypeGallery) => item.id === itemId);
+    const foundItem = demo.find((item: solidObject) => item.id === itemId);
     if (foundItem) {
       setItem(foundItem);
     }
@@ -61,7 +61,7 @@ const Gallery: FC = () => {
         </>
       )}
       <CardContainer>
-        {demo.map((item: TypeGallery, index) => {
+        {demo.map((item: solidObject, index) => {
           return <Card key={index} item={item} choseItem={choseItem} />;
         })}
       </CardContainer>
