@@ -12,8 +12,6 @@ export class MinioClient {
   private client: S3Client;
 
   constructor() {
-    console.log('MinioClient constructor');
-
     this.client = new S3Client({
       region: process.env.NEXT_PUBLIC_REGION,
       endpoint: process.env.NEXT_PUBLIC_MINIO_ENDPOINT ?? '',
@@ -26,13 +24,13 @@ export class MinioClient {
   }
 
   async getListBuckets(): Promise<Bucket[]> {
-    try {
-      const data = await this.client.send(new ListBucketsCommand({}));
-      return data.Buckets ?? [];
-    } catch (error) {
-      console.error('Error listing buckets', error);
-      throw error;
-    }
+    const data: Bucket[] = await this.client.send(new ListBucketsCommand({}))
+      .then((data) => data.Buckets ?? [])
+      .catch((error) => {
+        console.error('Error listing buckets', error);
+        return [];
+      });
+    return data;
   }
 
   async getListObjects(bucketName: string, maxKeys: number): Promise<ListObjectsCommandOutput> {
@@ -41,13 +39,14 @@ export class MinioClient {
       MaxKeys: maxKeys,
     };
 
-    try {
-      const data = await this.client.send(new ListObjectsCommand(params));
-      return data ?? [];
-    } catch (err) {
-      console.error('Error getListObject', err);
-      throw err;
-    }
+    const data: ListObjectsCommandOutput = await this.client.send(new ListObjectsCommand(params))
+      .then((data) => data)
+      .catch((error) => {
+        console.error('Error listing objects', error);
+        return {} as ListObjectsCommandOutput;
+      });
+    
+    return data;
   }
 
   async createBucket(bucketName: string) {
@@ -65,14 +64,11 @@ export class MinioClient {
       Body: file,
     };
 
-    console.log('Uploading object:', params);
-
-    try {
-      await this.client.send(new PutObjectCommand(params));
-      console.log('Object uploaded successfully');
-    } catch (error) {
-      console.error('Error uploading object', error);
-      throw error;
-    }
+    await this.client.send(new PutObjectCommand(params))
+      .then((data) => data)
+      .catch((error) => {
+        console.error('Error uploading file', error);
+        return;
+      });
   }
 }
