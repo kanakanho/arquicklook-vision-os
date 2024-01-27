@@ -3,6 +3,7 @@ import { styled } from 'styled-components';
 import { TypeQuestion } from './types/upload';
 
 type Props = {
+  // eslint-disable-next-line no-unused-vars
   setItem: (item: string) => void;
   question: TypeQuestion;
   inputFileType: string;

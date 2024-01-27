@@ -1,8 +1,9 @@
-import { ChangeEvent, FC, useEffect, useState } from 'react';
+import { ChangeEvent, FC, useState } from 'react';
 import { styled } from 'styled-components';
 import { TypeCard } from './types/upload';
 
 type Props = {
+  // eslint-disable-next-line no-unused-vars
   setItem: (item: string) => void;
   card: TypeCard;
 };
