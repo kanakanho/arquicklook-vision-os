@@ -82,11 +82,11 @@ const InputFile: FC<Props> = ({ setItem, question, inputFileType }) => {
       console.log(`File name: ${file.name}, type: ${file.type}`);
 
       const s3Client = new MinioPresenterImpl();
-      const promise = s3Client.uploadFile(file)
+      const promise = s3Client.uploadFile(file);
       promise.then((result) => {
         // eslint-disable-next-line no-console
-        console.log(result)
-      })
+        console.log(result);
+      });
 
       setUrl(file.name);
       setItem(url);
