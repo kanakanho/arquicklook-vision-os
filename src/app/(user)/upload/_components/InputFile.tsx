@@ -1,7 +1,7 @@
 import React, { ChangeEvent, FC, useRef, useState } from 'react';
 import { styled } from 'styled-components';
-import { MinioPresenterImpl } from '../../../../features/s3/presenter/MinioPresenterImpl';
 import { TypeQuestion } from './types/upload';
+import { MinioPresenterImpl } from '@/src/features/s3/presenter/MinioPresenterImpl';
 
 type Props = {
   // eslint-disable-next-line no-unused-vars
