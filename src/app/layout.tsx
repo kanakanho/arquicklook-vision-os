@@ -26,16 +26,16 @@ export const metadata: Metadata = {
   ],
   openGraph: {
     title: siteName,
-    description: description,
-    url: url,
-    siteName: siteName,
+    description,
+    url,
+    siteName,
     locale: 'ja_JP',
     type: 'website',
   },
   twitter: {
     card: 'summary',
     title: siteName,
-    description: description,
+    description,
     site: '@Shiba_ao_',
   },
 };
