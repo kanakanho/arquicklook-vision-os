@@ -1,5 +1,6 @@
 import { Metadata } from 'next';
 import { ReactNode } from 'react';
+import Header from './_components/Header';
 
 interface Props {
   children: ReactNode;
@@ -42,7 +43,10 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: Props) {
   return (
     <html lang='en'>
-      <body>{children}</body>
+      <body>
+        <Header />
+        {children}
+      </body>
     </html>
   );
 }

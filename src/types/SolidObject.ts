@@ -7,7 +7,7 @@ export type SolidObject = {
   description: string;
   date: Date;
   count: number;
-}
+};
 
 export const demoData: SolidObject = {
   id: 'e8cfddd2-8d60-4153-8c51-16526dda8118',
