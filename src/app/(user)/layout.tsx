@@ -1,11 +1,10 @@
-import type { Metadata } from 'next';
+import { Metadata } from 'next';
 import { ReactNode } from 'react';
-import './globals.css';
-import RecoilProvider from './RecoilProvider';
+import Header from './_components/Header';
 
-type Props = {
+interface Props {
   children: ReactNode;
-};
+}
 
 const siteName = 'AR Quick Look for VisionPro';
 const description = 'This site is a demo of AR Quick Look for VisionPro';
@@ -41,12 +40,13 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({ children }: Readonly<Props>) {
+export default function RootLayout({ children }: Props) {
   return (
     <html lang='en'>
-      <RecoilProvider>
-        <body>{children}</body>
-      </RecoilProvider>
+      <body>
+        <Header />
+        {children}
+      </body>
     </html>
   );
 }
