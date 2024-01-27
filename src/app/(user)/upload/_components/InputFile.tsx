@@ -61,13 +61,13 @@ const InputFile: FC<Props> = ({ setItem, question, inputFileType }) => {
 
   const usdzInputRef = useRef<HTMLInputElement>(null);
 
-  const handleUsdzClick = () => {
+  const handleClick = () => {
     if (usdzInputRef.current) {
       usdzInputRef.current.click();
     }
   };
 
-  const handleUsdzFileChange = (event: ChangeEvent<HTMLInputElement>) => {
+  const handleFileChange = (event: ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
     if (file) {
       // eslint-disable-next-line no-console
@@ -86,7 +86,7 @@ const InputFile: FC<Props> = ({ setItem, question, inputFileType }) => {
           type='file'
           name='example1'
           accept='.usdz'
-          onChange={handleUsdzFileChange}
+          onChange={handleFileChange}
         />
       ) : (
         <HiddenInput
@@ -94,10 +94,10 @@ const InputFile: FC<Props> = ({ setItem, question, inputFileType }) => {
           type='file'
           name='example'
           accept='image/*'
-          onChange={handleUsdzFileChange}
+          onChange={handleFileChange}
         />
       )}
-      <InputContainer onClick={handleUsdzClick}>
+      <InputContainer onClick={handleClick}>
         <InpuText>{question.guide}</InpuText>
         <ImageContainer>
           <Image src={`/${question.large.img}`} alt={question.large.text} />

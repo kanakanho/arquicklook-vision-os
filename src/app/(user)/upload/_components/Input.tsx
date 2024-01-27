@@ -31,7 +31,7 @@ const InputText = styled.input`
 const Input: FC<Props> = ({ setItem, card }) => {
   const [text, setText] = useState<string>('');
 
-  const cahngeText = (event: ChangeEvent<HTMLInputElement>) => {
+  const changeText = (event: ChangeEvent<HTMLInputElement>) => {
     setText(event.target.value);
     setItem(text);
   };
@@ -39,7 +39,7 @@ const Input: FC<Props> = ({ setItem, card }) => {
   return (
     <>
       <Text>{card.text}</Text>
-      <InputText type='text' onChange={cahngeText} />
+      <InputText type='text' onChange={changeText} />
     </>
   );
 };
