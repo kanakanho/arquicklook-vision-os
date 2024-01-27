@@ -90,14 +90,6 @@ const Gallery: FC = () => {
     return <Mobile items={items} />;
   }
 
-  useEffect(() => {
-    if (isChose) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = 'auto';
-    }
-  }, [isChose]);
-
   return (
     <>
       {isChose && (
