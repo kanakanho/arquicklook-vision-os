@@ -1,61 +1,69 @@
 'use client';
 
-import { FC, useEffect, useState } from 'react';
+import { useRouter } from 'next/navigation';
+import { FC } from 'react';
 import { styled } from 'styled-components';
-import Input from './_components/Input';
-import InputFile from './_components/InputFile';
-import { getLang, en } from './_components/i18n';
-import { TypeUpload } from './_components/types/upload';
+import { googleLogin } from '@/src/features/auth';
 
-const FormContainer = styled.div`
-  text-align: center;
+const LoginWrapper = styled.div`
+  height: calc(100vh - 68px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;
 
-const Title = styled.h1`
-  margin: 30px 0;
+const LoginContainer = styled.div`
+  padding: 16px 32px;
+  width: fit-content;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+
+  background-color: #eee;
+  border-radius: 20px;
 `;
 
-const Send = styled.div`
-  padding: 30px 0 25px 0;
-  font-size: 24px;
-  font-weight: 600;
-
-  margin: 0 auto;
-  background-color: #ccc;
-
-  &:hover {
-    cursor: pointer;
-    color: orange;
-    background-color: #333;
-  }
+const Text = styled.p`
+  margin: 0;
+  font-size: 32px;
 `;
 
-const Upload: FC = () => {
-  const [lang, setLang] = useState<TypeUpload>(en);
-  useEffect(() => {
-    setLang(getLang());
-  }, []);
+const IconWrapper = styled.div`
+  height: 48px;
+  margin-left: 24px;
+  display: inline;
 
-  // 送信するデータの作成
-  const [usdzUrl, setUsdzUrl] = useState<string>('');
-  const [pngUrl, setPngUrl] = useState<string>('');
-  const [name, setName] = useState<string>('');
-  const [description, setDescription] = useState<string>('');
+  border-radius: 32px;
+  background-color: #fafafa;
+`;
 
-  const sendData = () => {
-    console.log('送信するデータ', usdzUrl, pngUrl, name, description);
+const Page: FC = () => {
+  const router = useRouter();
+  const login = async () => {
+    googleLogin()
+      .then(() => router.push('/upload'))
+      .catch(() => router.push('/'));
   };
 
   return (
-    <FormContainer>
-      <InputFile question={lang.questions[0]} setItem={setUsdzUrl} inputFileType='usdz' />
-      <InputFile question={lang.questions[1]} setItem={setPngUrl} inputFileType='image' />
-      <Title>{lang.input.title}</Title>
-      <Input card={lang.input.cards[0]} setItem={setName} />
-      <Input card={lang.input.cards[1]} setItem={setDescription} />
-      <Send onClick={() => sendData()}>{lang.send}</Send>
-    </FormContainer>
+    <LoginWrapper>
+      <LoginContainer onClick={login}>
+        <Text>Login With Google</Text>
+        <IconWrapper>
+          <svg xmlns='http://www.w3.org/2000/svg' width='48' height='48' viewBox='0 0 16 16'>
+            <path
+              fill='none'
+              stroke='currentColor'
+              strokeLinecap='round'
+              strokeLinejoin='round'
+              strokeWidth='1.5'
+              d='m8.75 3.25l4.5 4.5l-4.5 4.5m-6-4.5h10.5'
+            />
+          </svg>
+        </IconWrapper>
+      </LoginContainer>
+    </LoginWrapper>
   );
 };
 
-export default Upload;
+export default Page;
