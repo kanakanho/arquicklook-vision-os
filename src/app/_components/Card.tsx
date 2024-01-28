@@ -66,9 +66,9 @@ export const Card: FC<TypeCrad> = ({ img, text, arrow, link }) => {
             <path
               fill='none'
               stroke='currentColor'
-              stroke-linecap='round'
-              stroke-linejoin='round'
-              stroke-width='1.5'
+              strokeLinecap='round'
+              strokeLinejoin='round'
+              strokeWidth='1.5'
               d='m8.75 3.25l4.5 4.5l-4.5 4.5m-6-4.5h10.5'
             />
           </svg>
