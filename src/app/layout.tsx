@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { ReactNode } from 'react';
 import './globals.css';
+import StyledComponentsRegistry from '../libs/registry';
 import RecoilProvider from './RecoilProvider';
 
 type Props = {
@@ -45,7 +46,9 @@ export default function RootLayout({ children }: Readonly<Props>) {
   return (
     <html lang='en'>
       <RecoilProvider>
-        <body>{children}</body>
+        <body>
+          <StyledComponentsRegistry>{children}</StyledComponentsRegistry>
+        </body>
       </RecoilProvider>
     </html>
   );
