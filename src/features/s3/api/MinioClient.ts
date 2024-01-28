@@ -24,7 +24,8 @@ export class MinioClient {
   }
 
   async getListBuckets(): Promise<Bucket[]> {
-    const data: Bucket[] = await this.client.send(new ListBucketsCommand({}))
+    const data: Bucket[] = await this.client
+      .send(new ListBucketsCommand({}))
       .then((data) => data.Buckets ?? [])
       .catch((error) => {
         console.error('Error listing buckets', error);
@@ -39,13 +40,14 @@ export class MinioClient {
       MaxKeys: maxKeys,
     };
 
-    const data: ListObjectsCommandOutput = await this.client.send(new ListObjectsCommand(params))
+    const data: ListObjectsCommandOutput = await this.client
+      .send(new ListObjectsCommand(params))
       .then((data) => data)
       .catch((error) => {
         console.error('Error listing objects', error);
         return {} as ListObjectsCommandOutput;
       });
-    
+
     return data;
   }
 
@@ -64,7 +66,8 @@ export class MinioClient {
       Body: file,
     };
 
-    await this.client.send(new PutObjectCommand(params))
+    await this.client
+      .send(new PutObjectCommand(params))
       .then((data) => data)
       .catch((error) => {
         console.error('Error uploading file', error);
