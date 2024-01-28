@@ -56,7 +56,7 @@ const Gallery: FC = () => {
       {isChose && (
         <>
           <Background onClick={() => setChose(false)} />
-          <Popup item={chosenItem} />
+          <Popup item={chosenItem} setChose={setChose} />
         </>
       )}
       <CardContainer>
