@@ -9,7 +9,7 @@ type Props = {
 
 const siteName = 'AR Quick Look for VisionPro';
 const description = 'This site is a demo of AR Quick Look for VisionPro';
-const url = 'https://arquicklook-vision-os.vercel.app/';
+const url = 'https://arquicklook-vision-os-kanakanho.vercel.app/';
 
 export const metadata: Metadata = {
   title: siteName,
