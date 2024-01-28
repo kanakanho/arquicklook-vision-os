@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { ReactNode } from 'react';
 import './globals.css';
 import StyledComponentsRegistry from '../libs/registry';
+import FirebaseAnalyticsProvider from './FirebaseAnalyticsProvider';
 import RecoilProvider from './RecoilProvider';
 
 type Props = {
@@ -45,11 +46,13 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: Readonly<Props>) {
   return (
     <html lang='en'>
-      <RecoilProvider>
-        <body>
-          <StyledComponentsRegistry>{children}</StyledComponentsRegistry>
-        </body>
-      </RecoilProvider>
+      <FirebaseAnalyticsProvider>
+        <RecoilProvider>
+          <body>
+            <StyledComponentsRegistry>{children}</StyledComponentsRegistry>
+          </body>
+        </RecoilProvider>
+      </FirebaseAnalyticsProvider>
     </html>
   );
 }
