@@ -1,10 +1,13 @@
-import { Metadata } from 'next';
+import type { Metadata } from 'next';
 import { ReactNode } from 'react';
+import FirebaseAnalyticsProvider from '../FirebaseAnalyticsProvider';
+import RecoilProvider from '../RecoilProvider';
 import Header from './_components/Header';
+import StyledComponentsRegistry from '@/src/libs/registry';
 
-interface Props {
+type Props = {
   children: ReactNode;
-}
+};
 
 const siteName = 'AR Quick Look for VisionPro';
 const description = 'This site is a demo of AR Quick Look for VisionPro';
@@ -40,13 +43,15 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({ children }: Props) {
+export default function RootLayout({ children }: Readonly<Props>) {
   return (
-    <html lang='en'>
-      <body>
-        <Header />
-        {children}
-      </body>
-    </html>
+    <>
+      <FirebaseAnalyticsProvider>
+        <RecoilProvider>
+          <Header />
+          <StyledComponentsRegistry>{children}</StyledComponentsRegistry>
+        </RecoilProvider>
+      </FirebaseAnalyticsProvider>
+    </>
   );
 }
