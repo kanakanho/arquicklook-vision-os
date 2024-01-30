@@ -22,5 +22,3 @@ export type TypeUpload = {
   input: TypeInput;
   send: string;
 };
-
-

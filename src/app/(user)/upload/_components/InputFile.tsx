@@ -82,19 +82,21 @@ const InputFile: FC<Props> = ({ setItem, question, inputFileType }) => {
 
       const s3Client = new MinioPresenterImpl();
       const promise = s3Client.uploadFile(file);
-      promise.then((result) => {
-        // eslint-disable-next-line no-console
-        if(result !== ''){
-          setUrl(result);
-          setItem(url);
-          setIsComplete(true);
-        }else{
+      promise
+        .then((result) => {
+          // eslint-disable-next-line no-console
+          if (result !== '') {
+            setUrl(result);
+            setItem(url);
+            setIsComplete(true);
+          } else {
+            alert(question.failed);
+          }
+        })
+        .catch((err) => {
+          console.error(err);
           alert(question.failed);
-        }
-      }).catch((err) => {
-        console.error(err);
-        alert(question.failed);
-      });
+        });
     }
   };
 
