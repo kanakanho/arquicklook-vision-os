@@ -48,8 +48,13 @@ export class MinioPresenterImpl implements MinioPresenter {
 
     const uploadFilePromise = this.client.uploadFile(bucketName, fileName, file);
 
-    return uploadFilePromise.then(() => {
-      return this.changeToServerURL(bucketName, fileName);
+    return uploadFilePromise.then((minioUploaded) => {
+      if(minioUploaded.isSuccess){
+        return this.changeToServerURL(bucketName, fileName);
+      }
+      return '';
+    }).catch((error) => {
+      throw new Error('Error uploading file', error);
     });
   }
 

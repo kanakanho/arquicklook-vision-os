@@ -4,6 +4,7 @@ export type TypeQuestion = {
   img: string;
   text: string;
   complete: string;
+  failed: string;
 };
 
 export type TypeCard = {
@@ -21,3 +22,5 @@ export type TypeUpload = {
   input: TypeInput;
   send: string;
 };
+
+

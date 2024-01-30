@@ -6,7 +6,9 @@ import {
   ListObjectsCommand,
   Bucket,
   ListObjectsCommandOutput,
+  PutObjectCommandOutput,
 } from '@aws-sdk/client-s3';
+import { MinioUploaded } from '../types/MinioUploaded';
 
 export class MinioClient {
   private client: S3Client;
@@ -59,19 +61,26 @@ export class MinioClient {
     );
   }
 
-  async uploadFile(bucketName: string, fileName: string, file: File): Promise<void> {
+  async uploadFile(bucketName: string, fileName: string, file: File): Promise<MinioUploaded> {
     const params = {
       Bucket: bucketName,
       Key: fileName,
       Body: file,
     };
 
-    await this.client
+    return this.client
       .send(new PutObjectCommand(params))
-      .then((data) => data)
-      .catch((error) => {
-        console.error('Error uploading file', error);
-        return;
+      .then((data) => {
+        return {
+          isSuccess: true,
+          data: data,
+        } as MinioUploaded;
+      })
+      .catch(() => {
+        return {
+          isSuccess: false,
+          data: {} as PutObjectCommandOutput,
+        } as MinioUploaded;
       });
   }
 }

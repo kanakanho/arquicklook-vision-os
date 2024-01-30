@@ -8,6 +8,7 @@ const ja: TypeUpload = {
       complete: 'アップロード完了',
       img: 'send.png',
       text: '.usdz形式の3Dモデルをアップロードしてください。',
+      failed: 'アップロードに失敗しました、もう一度お試しください。',
     },
     {
       title: '2. モデルのキャプチャーをアップロード',
@@ -15,6 +16,7 @@ const ja: TypeUpload = {
       complete: 'アップロード完了',
       img: 'send.png',
       text: '3Dモデルのプレビュー画像をアップロードしてください。',
+      failed: 'アップロードに失敗しました、もう一度お試しください。',
     },
   ],
   input: {

@@ -84,12 +84,17 @@ const InputFile: FC<Props> = ({ setItem, question, inputFileType }) => {
       const promise = s3Client.uploadFile(file);
       promise.then((result) => {
         // eslint-disable-next-line no-console
-        console.log(result);
+        if(result !== ''){
+          setUrl(result);
+          setItem(url);
+          setIsComplete(true);
+        }else{
+          alert(question.failed);
+        }
+      }).catch((err) => {
+        console.error(err);
+        alert(question.failed);
       });
-
-      setUrl(file.name);
-      setItem(url);
-      setIsComplete(true);
     }
   };
 
