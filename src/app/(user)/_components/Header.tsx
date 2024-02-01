@@ -11,11 +11,8 @@ const HeaderContainer = styled.header`
   font-weight: 600;
   font-size: 32px;
   padding: 10px 0;
-
-  /* 上に固定 */
   position: sticky;
   top: 0;
-
   z-index: 2;
 `;
 

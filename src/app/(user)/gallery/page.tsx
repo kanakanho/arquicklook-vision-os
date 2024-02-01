@@ -7,12 +7,13 @@ import Popup from './_components/Popup';
 import demo from './_components/i18n/demo';
 import { SolidObject } from '@/src/types/SolidObject';
 
-const CardContainer = styled.div`
+const CardContainer = styled.div<{ isCose: string }>`
   margin: 0 10%;
   padding: 75px 0;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 50px;
+  opacity: ${(props) => (props.isCose === 'true' ? '0.4' : '1')};
 
   @media screen and (max-width: 1400px) {
     margin: 0 50px;
@@ -25,7 +26,6 @@ const Background = styled.div`
   left: 0;
   width: 100%;
   height: 100%;
-
   z-index: 1;
 `;
 
@@ -39,11 +39,6 @@ const Gallery: FC = () => {
   };
 
   useEffect(() => {
-    for (let i = 0; i < demo.length; i++) {
-      if (demo[i].id === itemId) {
-        setItem(demo[i]);
-      }
-    }
     const foundItem = demo.find((item: SolidObject) => item.id === itemId);
     if (foundItem) {
       setItem(foundItem);
@@ -58,7 +53,7 @@ const Gallery: FC = () => {
           <Popup item={chosenItem} setChose={setChose} />
         </>
       )}
-      <CardContainer style={isChose ? { opacity: '0.4' } : { opacity: '1' }}>
+      <CardContainer isCose={isChose.toString()}>
         {demo.map((item: SolidObject) => {
           return <Card key={item.id} item={item} choseItem={choseItem} />;
         })}
