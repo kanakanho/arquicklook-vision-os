@@ -37,7 +37,7 @@ const CloseButton = styled.div`
   box-shadow: 0 0 10px rgba(44, 44, 44, 0.2);
 
   :hover {
-    background-color: rgba(255, 165, 0,0.4);
+    background-color: rgba(255, 165, 0, 0.4);
     border-radius: 50%;
     box-shadow: 0 0 8px orange;
   }
