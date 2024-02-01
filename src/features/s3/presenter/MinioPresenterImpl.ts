@@ -11,35 +11,38 @@ export class MinioPresenterImpl implements MinioPresenter {
   }
 
   async getListBuckets() {
-    const listBucketsPromise = this.client.getListBuckets();
-
-    listBucketsPromise.then((data) => {
-      data.forEach((bucket) => {
-        console.log('Bucket: ', bucket.Name, ' : ', bucket.CreationDate);
+    await this.client.getListBuckets()
+      .then((data) => {
+        data.forEach((bucket) => {
+          console.log('Bucket: ', bucket.Name, ' : ', bucket.CreationDate);
+        });
       });
-    });
   }
 
   async getListObjects() {
-    const getListObjectPromise = this.client.getListObjects('develop', 1000);
-
-    getListObjectPromise.then((data) => {
-      data.Contents?.forEach((content) => {
-        const url = this.changeToServerURL(
-          process.env.NEXT_PUBLIC_BUCKET_NAME ?? '',
-          content.Key ?? '',
-        );
-        console.log('url', url);
+    await this.client.getListObjects('develop', 1000)
+      .then((data) => {
+        data.Contents?.forEach((content) => {
+          const url = this.changeToServerURL(
+            process.env.NEXT_PUBLIC_BUCKET_NAME ?? '',
+            content.Key ?? '',
+          );
+          console.log('url', url);
+        });
+      })
+      .catch((error) => {
+        console.error('Error listing objects', error);
       });
-    });
   }
 
   async createBucket(bucketName: string) {
-    const createBucketPromise = this.client.createBucket(bucketName);
-
-    createBucketPromise.then((data) => {
-      console.log('Success create bucket', data);
-    });
+    await this.client.createBucket(bucketName)
+      .then((data) => {
+        console.log('Success create bucket', data);
+      })
+      .catch((error) => {
+        console.error('Error create bucket', error);
+      });
   }
 
   async uploadFile(file: File): Promise<string> {
@@ -48,10 +51,13 @@ export class MinioPresenterImpl implements MinioPresenter {
 
     const uploadFilePromise = this.client.uploadFile(bucketName, fileName, file);
 
-    return uploadFilePromise
+    return await uploadFilePromise
       .then((minioUploaded) => {
         if (minioUploaded.isSuccess) {
-          return this.changeToServerURL(bucketName, fileName);
+          return this.changeToServerURL(
+            bucketName,
+            fileName
+          );
         }
         return '';
       })

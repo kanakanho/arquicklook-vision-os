@@ -71,20 +71,15 @@ const InputFile: FC<Props> = ({ setItem, question, inputFileType }) => {
     }
   };
 
-  const handleFileChange = (event: ChangeEvent<HTMLInputElement>) => {
+  const handleFileChange = async (event: ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
     if (
       (file && inputFileType === 'usdz' && file?.type === 'model/vnd.usdz+zip') ||
       (file && inputFileType === 'image' && file?.type.includes('image'))
     ) {
-      // eslint-disable-next-line no-console
-      console.log(`File name: ${file.name}, type: ${file.type}`);
-
       const s3Client = new MinioPresenterImpl();
-      const promise = s3Client.uploadFile(file);
-      promise
+      await s3Client.uploadFile(file)
         .then((result) => {
-          // eslint-disable-next-line no-console
           if (result !== '') {
             setUrl(result);
             setItem(url);
