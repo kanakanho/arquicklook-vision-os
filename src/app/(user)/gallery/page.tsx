@@ -24,9 +24,8 @@ const Background = styled.div`
   top: 0;
   left: 0;
   width: 100%;
-  margin-top: 70px;
+  height: 100%;
 
-  background-color: rgba(255, 255, 255, 0.5);
   z-index: 1;
 `;
 
@@ -59,7 +58,7 @@ const Gallery: FC = () => {
           <Popup item={chosenItem} setChose={setChose} />
         </>
       )}
-      <CardContainer>
+      <CardContainer style={isChose ? { opacity: '0.4' } : { opacity: '1' }}>
         {demo.map((item: SolidObject) => {
           return <Card key={item.id} item={item} choseItem={choseItem} />;
         })}
