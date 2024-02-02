@@ -62,25 +62,45 @@ const InputFile: FC<Props> = ({ setItem, question, inputFileType }) => {
   const [url, setUrl] = useState<string>('');
   const [isComplete, setIsComplete] = useState<boolean>(false);
 
-  const usdzInputRef = useRef<HTMLInputElement>(null);
+  const fileInputRef = useRef<HTMLInputElement>(null);
+  const fileDropRef = useRef<HTMLDivElement>(null);
 
-  const handleClick = () => {
-    if (usdzInputRef.current) {
-      usdzInputRef.current.click();
-    }
-  };
-
-  const handleFileChange = (event: ChangeEvent<HTMLInputElement>) => {
-    const file = event.target.files?.[0];
+  const fileCheck = (file: File) => {
     if (
-      (file && inputFileType === 'usdz' && file?.type === 'model/vnd.usdz+zip') ||
-      (file && inputFileType === 'image' && file?.type.includes('image'))
+      (inputFileType === 'usdz' && file?.type === 'model/vnd.usdz+zip') ||
+      (inputFileType === 'image' && file?.type.includes('image'))
     ) {
       // eslint-disable-next-line no-console
       console.log(`File name: ${file.name}, type: ${file.type}`);
       setUrl(file.name);
       setItem(url);
       setIsComplete(true);
+    } else {
+      alert('ファイル形式が正しくありません');
+    }
+  };
+
+  const handleClick = () => {
+    if (fileInputRef.current) {
+      fileInputRef.current.click();
+    }
+  };
+
+  const handleFileChange = (event: ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0];
+    if (file) fileCheck(file);
+  };
+
+  const onDrop = (event: React.DragEvent<HTMLDivElement>) => {
+    event.preventDefault();
+    if (event.dataTransfer) {
+      if (event.dataTransfer.files.length === 1) {
+        const file = event.dataTransfer.files[0];
+        fileCheck(file);
+      } else {
+        alert('ファイルは1つだけ選択してください');
+      }
+      event.dataTransfer.clearData();
     }
   };
 
@@ -88,12 +108,19 @@ const InputFile: FC<Props> = ({ setItem, question, inputFileType }) => {
     <>
       <Title>{question.title}</Title>
       <HiddenInput
-        ref={usdzInputRef}
+        ref={fileInputRef}
         type='file'
         accept={inputFileType === 'usdz' ? '.usdz' : 'image/*'}
         onChange={handleFileChange}
       />
-      <InputContainer onClick={handleClick}>
+      <InputContainer
+        // ファイルを選択してインポートする用
+        onClick={handleClick}
+        // ドラッグアンドドロップ用
+        ref={fileDropRef}
+        onDragOver={(event) => event.preventDefault()}
+        onDrop={onDrop}
+      >
         <Image src={`/${question.img}`} alt={question.text} />
         <InpuText>{isComplete ? question.complete : question.guide}</InpuText>
       </InputContainer>
