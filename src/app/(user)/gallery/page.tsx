@@ -18,16 +18,17 @@ const GalleryContaier = styled.div`
   }
 `;
 
-const FilterContainer = styled.div`
+const FilterContainer = styled.div<{ $isChose: isChose }>`
   margin: 25px 0;
+  opacity: ${(props) => (props.$isChose === 'true' ? '0.4' : '1')};
 `;
 
-const CardContainer = styled.div<{ isChose: isChose }>`
+const CardContainer = styled.div<{ $isChose: isChose }>`
   padding: 50px 0;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 50px;
-  opacity: ${(props) => (props.isChose === 'true' ? '0.4' : '1')};
+  opacity: ${(props) => (props.$isChose === 'true' ? '0.4' : '1')};
 `;
 
 const Background = styled.div`
@@ -81,10 +82,10 @@ const Gallery: FC = () => {
           <Popup item={chosenItem} setChose={setChose} />
         </>
       )}
-      <FilterContainer>
+      <FilterContainer $isChose={isChose.toString()}>
         <Filter sort={sort} setSort={setSort} />
       </FilterContainer>
-      <CardContainer isChose={isChose.toString()}>
+      <CardContainer $isChose={isChose.toString()}>
         {items.map((item: SolidObject) => {
           return <Card key={item.id} item={item} choseItem={choseItem} />;
         })}
