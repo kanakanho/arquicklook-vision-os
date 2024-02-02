@@ -9,10 +9,10 @@ import demo from './_components/i18n/demo';
 import { SolidObject } from '@/src/types/SolidObject';
 
 export type Sort = 'latest' | 'popular';
+type isChose = string;
 
 const GalleryContaier = styled.div`
   margin: 0 10%;
-
   @media screen and (max-width: 1400px) {
     margin: 0 50px;
   }
@@ -22,11 +22,12 @@ const FilterContainer = styled.div`
   margin: 25px 0;
 `;
 
-const CardContainer = styled.div`
-  margin: 50px 0;
+const CardContainer = styled.div<{ isChose: isChose }>`
+  padding: 50px 0;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 50px;
+  opacity: ${(props) => (props.isChose === 'true' ? '0.4' : '1')};
 `;
 
 const Background = styled.div`
@@ -34,9 +35,7 @@ const Background = styled.div`
   top: 0;
   left: 0;
   width: 100%;
-  margin-top: 70px;
-
-  background-color: rgba(255, 255, 255, 0.5);
+  height: 100%;
   z-index: 1;
 `;
 
@@ -85,7 +84,7 @@ const Gallery: FC = () => {
       <FilterContainer>
         <Filter sort={sort} setSort={setSort} />
       </FilterContainer>
-      <CardContainer>
+      <CardContainer isChose={isChose.toString()}>
         {items.map((item: SolidObject) => {
           return <Card key={item.id} item={item} choseItem={choseItem} />;
         })}
