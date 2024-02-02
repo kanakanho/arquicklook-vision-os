@@ -1,11 +1,12 @@
 import React, { ChangeEvent, FC, useRef, useState } from 'react';
 import { styled } from 'styled-components';
-import { TypeQuestion } from './types/upload';
+import { Alert, TypeQuestion } from './types/upload';
 
 type Props = {
   // eslint-disable-next-line no-unused-vars
   setItem: (item: string) => void;
   question: TypeQuestion;
+  alert: Alert;
   inputFileType: 'usdz' | 'image';
 };
 
@@ -58,7 +59,7 @@ const Text = styled.p`
   padding: 20px 0;
   font-size: 24px;
 `;
-const InputFile: FC<Props> = ({ setItem, question, inputFileType }) => {
+const InputFile: FC<Props> = ({ setItem, question, alert, inputFileType }) => {
   const [url, setUrl] = useState<string>('');
   const [isComplete, setIsComplete] = useState<boolean>(false);
 
@@ -76,7 +77,7 @@ const InputFile: FC<Props> = ({ setItem, question, inputFileType }) => {
       setItem(url);
       setIsComplete(true);
     } else {
-      alert('ファイル形式が正しくありません');
+      window.alert(alert.filetype);
     }
   };
 
@@ -98,7 +99,7 @@ const InputFile: FC<Props> = ({ setItem, question, inputFileType }) => {
         const file = event.dataTransfer.files[0];
         fileCheck(file);
       } else {
-        alert('ファイルは1つだけ選択してください');
+        window.alert(alert.onedrop);
       }
       event.dataTransfer.clearData();
     }
