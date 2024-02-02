@@ -21,12 +21,12 @@ const ChoseCheckBox = styled.div`
   background-color: rgba(255, 165, 0, 0.7);
 
   border-radius: 10px;
-  box-shadow: 0 0 5px white;
+  box-shadow: 0 0 5px transparent;
 
   font-weight: 500;
 `;
 
-const UnChoseCheckBox = styled.div`
+const UnChoseCheckBox = styled.button`
   margin: 1px;
   padding: 9px 19px 7px 19px;
   background-color: white;
@@ -35,10 +35,11 @@ const UnChoseCheckBox = styled.div`
   box-shadow: 0 0 5px orange;
 
   font-weight: 500;
+  font-size: 1rem;
+  cursor: pointer;
 
-  &:hover {
-    cursor: pointer;
-  }
+  border: none;
+  outline: none;
 `;
 
 const Filter: FC<Props> = ({ sort, setSort }) => {
