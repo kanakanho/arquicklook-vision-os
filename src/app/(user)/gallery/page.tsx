@@ -19,13 +19,14 @@ const GalleryContaier = styled.div`
   }
 `;
 
-const FilterContainer = styled.div`
+const FilterContainer = styled.div<{ $isChose: string }>`
   margin: 25px 0;
+  opacity: ${(props) => (props.$isChose === 'true' ? '0.4' : '1')};
 `;
 
 const CardContainer = styled.div<{ $isChose: string }>`
   margin: 0 10%;
-  padding: 75px 0;
+  padding: 50px 0;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 50px;
@@ -94,7 +95,7 @@ const Gallery: FC = () => {
           <Popup item={chosenItem} setChose={setChose} />
         </>
       )}
-      <FilterContainer>
+      <FilterContainer $isChose={isChose.toString()}>
         <Filter sort={sort} setSort={setSort} />
       </FilterContainer>
       <CardContainer $isChose={isChose.toString()}>
