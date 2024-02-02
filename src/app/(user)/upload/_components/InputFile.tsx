@@ -94,15 +94,14 @@ const InputFile: FC<Props> = ({ setItem, question, alert, inputFileType }) => {
 
   const onDrop = (event: React.DragEvent<HTMLDivElement>) => {
     event.preventDefault();
-    if (event.dataTransfer) {
-      if (event.dataTransfer.files.length === 1) {
-        const file = event.dataTransfer.files[0];
-        fileCheck(file);
-      } else {
-        window.alert(alert.onedrop);
-      }
-      event.dataTransfer.clearData();
+    if (!event.dataTransfer) return;
+    if (event.dataTransfer.files.length === 1) {
+      const file = event.dataTransfer.files[0];
+      fileCheck(file);
+    } else {
+      window.alert(alert.onedrop);
     }
+    event.dataTransfer.clearData();
   };
 
   return (
