@@ -3,20 +3,30 @@
 import React, { FC, useEffect, useState } from 'react';
 import { styled } from 'styled-components';
 import Card from './_components/Card';
+import Filter from './_components/Filter';
 import Popup from './_components/Popup';
 import demo from './_components/i18n/demo';
 import { SolidObject } from '@/src/types/SolidObject';
 
-const CardContainer = styled.div`
+export type Sort = 'latest' | 'popular';
+
+const GalleryContaier = styled.div`
   margin: 0 10%;
-  padding: 75px 0;
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 50px;
 
   @media screen and (max-width: 1400px) {
     margin: 0 50px;
   }
+`;
+
+const FilterContainer = styled.div`
+  margin: 25px 0;
+`;
+
+const CardContainer = styled.div`
+  margin: 50px 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 50px;
 `;
 
 const Background = styled.div`
@@ -31,40 +41,56 @@ const Background = styled.div`
 `;
 
 const Gallery: FC = () => {
+  const [items, setItems] = useState<SolidObject[]>(demo);
+  const [sort, setSort] = useState<Sort>('latest');
   const [isChose, setChose] = useState<boolean>(false);
   const [itemId, setId] = useState<string>('');
-  const [chosenItem, setItem] = useState<SolidObject>(demo[0]);
+  const [chosenItem, setItem] = useState<SolidObject>(items[0]);
   const choseItem = (id: string) => {
     setId(id);
     setChose(true);
   };
 
   useEffect(() => {
-    for (let i = 0; i < demo.length; i++) {
-      if (demo[i].id === itemId) {
-        setItem(demo[i]);
+    for (let i = 0; i < items.length; i++) {
+      if (items[i].id === itemId) {
+        setItem(items[i]);
       }
     }
-    const foundItem = demo.find((item: SolidObject) => item.id === itemId);
+    const foundItem = items.find((item: SolidObject) => item.id === itemId);
     if (foundItem) {
       setItem(foundItem);
     }
-  }, [itemId]);
+  }, [itemId, items]);
+
+  useEffect(() => {
+    // 本番ではここでAPIを叩く
+    if (sort === 'latest') {
+      console.log('新しい順で要求する（デフォルト）');
+      setItems(demo);
+    } else {
+      console.log('人気順で要求する');
+      // setItems();
+    }
+  }, [sort]);
 
   return (
-    <>
+    <GalleryContaier>
       {isChose && (
         <>
           <Background onClick={() => setChose(false)} />
           <Popup item={chosenItem} setChose={setChose} />
         </>
       )}
+      <FilterContainer>
+        <Filter sort={sort} setSort={setSort} />
+      </FilterContainer>
       <CardContainer>
-        {demo.map((item: SolidObject) => {
+        {items.map((item: SolidObject) => {
           return <Card key={item.id} item={item} choseItem={choseItem} />;
         })}
       </CardContainer>
-    </>
+    </GalleryContaier>
   );
 };
 
