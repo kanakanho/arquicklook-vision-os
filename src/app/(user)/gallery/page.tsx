@@ -83,6 +83,14 @@ const Gallery: FC = () => {
     }
   }, [sort]);
 
+  useEffect(() => {
+    if (isChose) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'auto';
+    }
+  }, [isChose]);
+
   if (isSmartphone) {
     return <Mobile items={demo} />;
   }
