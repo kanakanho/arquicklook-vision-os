@@ -30,6 +30,10 @@ const ja: TypeUpload = {
       },
     ],
   },
+  alert: {
+    filetype: 'ファイル形式が正しくありません',
+    onedrop: 'アップロードできるファイルは1つまでです',
+  },
   send: 'データを送信',
 };
 
