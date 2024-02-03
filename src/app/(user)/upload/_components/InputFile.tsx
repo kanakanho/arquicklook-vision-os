@@ -1,6 +1,7 @@
 import React, { ChangeEvent, FC, useRef, useState } from 'react';
 import { styled } from 'styled-components';
 import { Alert, TypeQuestion } from './types/upload';
+import { MinioPresenterImpl } from '@/src/features/s3/presenter/MinioPresenterImpl';
 
 type Props = {
   // eslint-disable-next-line no-unused-vars
@@ -66,16 +67,29 @@ const InputFile: FC<Props> = ({ setItem, question, alert, inputFileType }) => {
   const fileInputRef = useRef<HTMLInputElement>(null);
   const fileDropRef = useRef<HTMLDivElement>(null);
 
-  const fileCheck = (file: File) => {
+  const fileCheck = async (file: File) => {
     if (
       (inputFileType === 'usdz' && file?.type === 'model/vnd.usdz+zip') ||
       (inputFileType === 'image' && file?.type.includes('image'))
     ) {
       // eslint-disable-next-line no-console
       console.log(`File name: ${file.name}, type: ${file.type}`);
-      setUrl(file.name);
-      setItem(url);
-      setIsComplete(true);
+      const s3Client = new MinioPresenterImpl();
+      await s3Client
+        .uploadFile(file)
+        .then((result) => {
+          if (result !== '') {
+            setUrl(result);
+            setItem(url);
+            setIsComplete(true);
+          } else {
+            window.alert(question.failed);
+          }
+        })
+        .catch((err) => {
+          console.error(err);
+          window.alert(question.failed);
+        });
     } else {
       window.alert(alert.filetype);
     }
