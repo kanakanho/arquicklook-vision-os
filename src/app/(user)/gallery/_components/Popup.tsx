@@ -5,6 +5,8 @@ import { SolidObject } from '@/src/types/SolidObject';
 
 type Props = {
   item: SolidObject;
+  // eslint-disable-next-line no-unused-vars
+  setChose: (isChose: boolean) => void;
 };
 
 const PopupContainer = styled.div`
@@ -20,6 +22,27 @@ const PopupContainer = styled.div`
 
   display: grid;
   grid-template-columns: 2fr 1fr;
+`;
+
+const CloseButton = styled.div`
+  width: 28px;
+  height: 28px;
+
+  position: absolute;
+  top: 12px;
+  left: 12px;
+
+  background-color: #eee;
+  border-radius: 50%;
+  box-shadow: 0 0 10px rgba(44, 44, 44, 0.2);
+
+  :hover {
+    background-color: rgba(255, 165, 0, 0.4);
+    border-radius: 50%;
+    box-shadow: 0 0 8px orange;
+  }
+
+  cursor: pointer;
 `;
 
 const ImageContainer = styled.div`
@@ -93,10 +116,18 @@ const ViewCount = styled.p`
   }
 `;
 
-const Popup: FC<Props> = ({ item }) => {
+const Popup: FC<Props> = ({ item, setChose }) => {
   const date = item.date.toLocaleDateString();
   return (
     <PopupContainer>
+      <CloseButton onClick={() => setChose(false)}>
+        <svg xmlns='http://www.w3.org/2000/svg' width='28' height='28' viewBox='0 0 1024 1024'>
+          <path
+            fill='currentColor'
+            d='M195.2 195.2a64 64 0 0 1 90.496 0L512 421.504L738.304 195.2a64 64 0 0 1 90.496 90.496L602.496 512L828.8 738.304a64 64 0 0 1-90.496 90.496L512 602.496L285.696 828.8a64 64 0 0 1-90.496-90.496L421.504 512L195.2 285.696a64 64 0 0 1 0-90.496'
+          />
+        </svg>
+      </CloseButton>
       <ImageContainer>
         <Link href={item.usdz} rel='ar'>
           <Image src={item.image} alt={item.user} />

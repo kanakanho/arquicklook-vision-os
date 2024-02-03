@@ -17,8 +17,14 @@ export type TypeInput = {
   cards: TypeCard[];
 };
 
+export type Alert = {
+  filetype: string;
+  onedrop: string;
+};
+
 export type TypeUpload = {
   questions: TypeQuestion[];
   input: TypeInput;
+  alert: Alert;
   send: string;
 };

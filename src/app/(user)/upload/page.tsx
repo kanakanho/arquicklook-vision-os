@@ -64,8 +64,18 @@ const Upload: FC = () => {
   return (
     <>
       <FormContainer>
-        <InputFile question={lang.questions[0]} setItem={setUsdzUrl} inputFileType='usdz' />
-        <InputFile question={lang.questions[1]} setItem={setPngUrl} inputFileType='image' />
+        <InputFile
+          question={lang.questions[0]}
+          alert={lang.alert}
+          setItem={setUsdzUrl}
+          inputFileType='usdz'
+        />
+        <InputFile
+          question={lang.questions[1]}
+          alert={lang.alert}
+          setItem={setPngUrl}
+          inputFileType='image'
+        />
         <Title>{lang.input.title}</Title>
         <Input card={lang.input.cards[0]} setItem={setName} />
         <Input card={lang.input.cards[1]} setItem={setDescription} />

@@ -32,6 +32,10 @@ const en: TypeUpload = {
       },
     ],
   },
+  alert: {
+    filetype: 'The file format is incorrect',
+    onedrop: 'You can upload only one file',
+  },
   send: 'Send',
 };
 
