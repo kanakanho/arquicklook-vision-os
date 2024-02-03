@@ -11,22 +11,24 @@ export class MinioPresenterImpl implements MinioPresenter {
   }
 
   async getListBuckets() {
-    await this.client.getListBuckets()
-      .then((data) => {
-        data.forEach((bucket) => {
-          console.log('Bucket: ', bucket.Name, ' : ', bucket.CreationDate);
-        });
+    await this.client.getListBuckets().then((data) => {
+      data.forEach((bucket) => {
+        // eslint-disable-next-line no-console
+        console.log('Bucket: ', bucket.Name, ' : ', bucket.CreationDate);
       });
+    });
   }
 
   async getListObjects() {
-    await this.client.getListObjects('develop', 1000)
+    await this.client
+      .getListObjects('develop', 1000)
       .then((data) => {
         data.Contents?.forEach((content) => {
           const url = this.changeToServerURL(
             process.env.NEXT_PUBLIC_BUCKET_NAME ?? '',
             content.Key ?? '',
           );
+          // eslint-disable-next-line no-console
           console.log('url', url);
         });
       })
@@ -36,8 +38,10 @@ export class MinioPresenterImpl implements MinioPresenter {
   }
 
   async createBucket(bucketName: string) {
-    await this.client.createBucket(bucketName)
+    await this.client
+      .createBucket(bucketName)
       .then((data) => {
+        // eslint-disable-next-line no-console
         console.log('Success create bucket', data);
       })
       .catch((error) => {
@@ -54,10 +58,7 @@ export class MinioPresenterImpl implements MinioPresenter {
     return await uploadFilePromise
       .then((minioUploaded) => {
         if (minioUploaded.isSuccess) {
-          return this.changeToServerURL(
-            bucketName,
-            fileName
-          );
+          return this.changeToServerURL(bucketName, fileName);
         }
         return '';
       })

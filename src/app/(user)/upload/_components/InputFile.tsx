@@ -75,7 +75,8 @@ const InputFile: FC<Props> = ({ setItem, question, alert, inputFileType }) => {
       // eslint-disable-next-line no-console
       console.log(`File name: ${file.name}, type: ${file.type}`);
       const s3Client = new MinioPresenterImpl();
-      await s3Client.uploadFile(file)
+      await s3Client
+        .uploadFile(file)
         .then((result) => {
           if (result !== '') {
             setUrl(result);
