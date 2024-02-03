@@ -6,7 +6,6 @@ import {
   ListObjectsCommand,
   Bucket,
   ListObjectsCommandOutput,
-  PutObjectCommandOutput,
 } from '@aws-sdk/client-s3';
 import { MinioUploaded } from '../types/MinioUploaded';
 
@@ -53,7 +52,7 @@ export class MinioClient {
     return data;
   }
 
-  async createBucket(bucketName: string) {
+  async createBucket(bucketName: string): Promise<void> {
     await this.client.send(
       new CreateBucketCommand({
         Bucket: bucketName,
@@ -68,7 +67,7 @@ export class MinioClient {
       Body: file,
     };
 
-    return this.client
+    return await this.client
       .send(new PutObjectCommand(params))
       .then((data) => {
         return {
@@ -79,7 +78,7 @@ export class MinioClient {
       .catch(() => {
         return {
           isSuccess: false,
-          data: {} as PutObjectCommandOutput,
+          data: {},
         } as MinioUploaded;
       });
   }
