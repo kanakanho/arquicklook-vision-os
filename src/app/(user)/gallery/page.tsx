@@ -51,18 +51,13 @@ const Gallery: FC = () => {
   const [isSmartphone, setIsSmartphone] = useState<boolean>(false);
   const [isChose, setChose] = useState<boolean>(false);
   const [itemId, setId] = useState<string>('');
-  const [chosenItem, setItem] = useState<SolidObject>(items[0]);
+  const [chosenItem, setItem] = useState<SolidObject | null>(null);
   const choseItem = (id: string) => {
     setId(id);
     setChose(true);
   };
 
   useEffect(() => {
-    for (let i = 0; i < items.length; i++) {
-      if (items[i].id === itemId) {
-        setItem(items[i]);
-      }
-    }
     const foundItem = items.find((item: SolidObject) => item.id === itemId);
     if (foundItem) {
       setItem(foundItem);
