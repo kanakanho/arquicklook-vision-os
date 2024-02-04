@@ -22,9 +22,16 @@ export type Alert = {
   onedrop: string;
 };
 
+export type SmartPhone = {
+  title: string;
+  text: string;
+  togallery: string;
+};
+
 export type TypeUpload = {
   questions: TypeQuestion[];
   input: TypeInput;
   alert: Alert;
   send: string;
+  smartphone: SmartPhone;
 };

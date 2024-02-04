@@ -37,6 +37,11 @@ const ja: TypeUpload = {
     onedrop: 'アップロードできるファイルは1つまでです',
   },
   send: 'データを送信',
+  smartphone: {
+    title: 'スマートフォンからはアップロードできません',
+    text: 'PC か Vision Pro からアップロードしてください',
+    togallery: 'ギャラリーを見る',
+  },
 };
 
 export default ja;

@@ -3,17 +3,18 @@
 import React, { FC, useEffect, useState } from 'react';
 import { styled } from 'styled-components';
 import Card from './_components/Card';
+import Mobile from './_components/Mobile';
 import Popup from './_components/Popup';
 import demo from './_components/i18n/demo';
 import { SolidObject } from '@/src/types/SolidObject';
 
-const CardContainer = styled.div<{ isCose: string }>`
+const CardContainer = styled.div<{ $isChose: string }>`
   margin: 0 10%;
   padding: 75px 0;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 50px;
-  opacity: ${(props) => (props.isCose === 'true' ? '0.4' : '1')};
+  opacity: ${(props) => (props.$isChose === 'true' ? '0.4' : '1')};
 
   @media screen and (max-width: 1400px) {
     margin: 0 50px;
@@ -30,6 +31,7 @@ const Background = styled.div`
 `;
 
 const Gallery: FC = () => {
+  const [isSmartphone, setIsSmartphone] = useState<boolean>(false);
   const [isChose, setChose] = useState<boolean>(false);
   const [itemId, setId] = useState<string>('');
   const [chosenItem, setItem] = useState<SolidObject>(demo[0]);
@@ -43,7 +45,14 @@ const Gallery: FC = () => {
     if (foundItem) {
       setItem(foundItem);
     }
+    if (navigator.userAgent.match(/(iPhone|iPod|Android)/i)) {
+      setIsSmartphone(true);
+    }
   }, [itemId]);
+
+  if (isSmartphone) {
+    return <Mobile items={demo} />;
+  }
 
   return (
     <>
@@ -53,7 +62,7 @@ const Gallery: FC = () => {
           <Popup item={chosenItem} setChose={setChose} />
         </>
       )}
-      <CardContainer isCose={isChose.toString()}>
+      <CardContainer $isChose={isChose.toString()}>
         {demo.map((item: SolidObject) => {
           return <Card key={item.id} item={item} choseItem={choseItem} />;
         })}
