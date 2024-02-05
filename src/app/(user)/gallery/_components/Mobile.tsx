@@ -119,7 +119,7 @@ const Mobile: FC<Props> = ({ items }) => {
         });
         setIsMiniScroll(true);
       }
-    }, 25);
+    }, 30);
 
     setScrollTimeoutId(newTimeoutId);
   };
