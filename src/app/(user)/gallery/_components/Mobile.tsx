@@ -12,15 +12,12 @@ type Props = {
 
 const MobileContainer = styled.div`
   overflow-x: auto;
-  ::-webkit-scrollbar {
-    display: none;
-  }
-  ::-webkit-scrollbar-thumb {
-    display: none;
-  }
+  ::-webkit-scrollbar,
+  ::-webkit-scrollbar-thumb,
   ::-webkit-scrollbar-track {
     display: none;
   }
+  scroll-snap-type: x mandatory;
 `;
 
 const CardContainer = styled.div`
@@ -96,12 +93,11 @@ const Mobile: FC<Props> = ({ items }) => {
         // 変化量が+か-かで判定
         if (newScrollLeft - currentWidth > 0) {
           // +なら右にスクロール
-          closest = closest + window.innerWidth * 1.11;
+          choiceNowItem(closest + window.innerWidth * 1.11);
         } else {
           // -なら左にスクロール
-          closest = closest - window.innerWidth * 1.11;
+          choiceNowItem(closest - window.innerWidth * 1.11);
         }
-        choiceNowItem(closest);
         target.scrollTo({
           left: closest,
           behavior: 'smooth',
@@ -121,7 +117,7 @@ const Mobile: FC<Props> = ({ items }) => {
         });
         setIsMiniScroll(true);
       }
-    }, 40);
+    }, 36);
 
     setScrollTimeoutId(newTimeoutId);
   };
