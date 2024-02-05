@@ -17,6 +17,7 @@ const MobileContainer = styled.div`
   ::-webkit-scrollbar-track {
     display: none;
   }
+
   scroll-snap-type: x mandatory;
 `;
 
@@ -100,20 +101,18 @@ const Mobile: FC<Props> = ({ items }) => {
         }
         target.scrollTo({
           left: closest,
-          behavior: 'smooth',
+          behavior: 'auto',
         });
       } else {
         // 通常のスクロール
         // 一番近いカードの位置を取得
         const closest = cardWidths.reduce((prev, curr) => {
-          const closestTmp =
-            Math.abs(curr - scrollLeft) < Math.abs(prev - scrollLeft) ? curr : prev;
-          return closestTmp;
+          return Math.abs(curr - scrollLeft) < Math.abs(prev - scrollLeft) ? curr : prev;
         });
         choiceNowItem(closest);
         target.scrollTo({
           left: closest,
-          behavior: 'smooth',
+          behavior: 'auto',
         });
         setIsMiniScroll(true);
       }
