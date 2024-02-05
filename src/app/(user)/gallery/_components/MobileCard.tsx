@@ -1,5 +1,5 @@
 'use client';
-import Link from 'next/link';
+
 import { FC, useEffect } from 'react';
 import { styled } from 'styled-components';
 import MobileDescription from './MobileDescription';
@@ -117,9 +117,9 @@ const MobileCard: FC<Props> = ({ item }) => {
   return (
     <Item>
       <LinkBox>
-        <Link href={item.usdz} rel='ar'>
+        <a rel='ar' href={item.usdz}>
           <CardThumbnail src={item.image} alt={item.modelName} />
-        </Link>
+        </a>
       </LinkBox>
       <TextContainer>
         <ModelName>{item.modelName}</ModelName>
