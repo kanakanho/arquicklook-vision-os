@@ -85,7 +85,7 @@ const Mobile: FC<Props> = ({ items }) => {
       }
 
       // スクロール量が一定以上ならミニスクロールを実行
-      if (Math.abs(newScrollLeft - currentWidth) < Math.floor(window.innerWidth)) {
+      if (Math.abs(newScrollLeft - currentWidth) < Math.floor(window.innerWidth) * 0.75) {
         // 一番近いカードの位置を取得
         let closest = cardWidths.reduce((prev, curr) => {
           return Math.abs(curr - scrollLeft) < Math.abs(prev - scrollLeft) ? curr : prev;
@@ -119,7 +119,7 @@ const Mobile: FC<Props> = ({ items }) => {
         });
         setIsMiniScroll(true);
       }
-    }, 40);
+    }, 25);
 
     setScrollTimeoutId(newTimeoutId);
   };

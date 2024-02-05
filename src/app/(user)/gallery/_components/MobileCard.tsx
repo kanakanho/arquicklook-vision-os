@@ -116,7 +116,6 @@ const MobileCard: FC<Props> = ({ item }) => {
 
   return (
     <Item>
-      {/* <CardThumbnail src={item.image} alt={item.modelName} /> */}
       <LinkBox>
         <Link href={item.usdz} rel='ar'>
           <CardThumbnail src={item.image} alt={item.modelName} />
