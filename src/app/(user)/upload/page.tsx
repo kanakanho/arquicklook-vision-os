@@ -51,10 +51,13 @@ const Upload: FC = () => {
       }
     });
     setLang(getLang());
+  }, [router, isLogin, setLoginPermissionState]);
+
+  useEffect(() => {
     if (navigator.userAgent.match(/(iPhone|iPod|Android)/i)) {
       setIsSmartphone(true);
     }
-  }, [router, isLogin, setLoginPermissionState]);
+  }, []);
 
   // 送信するデータの作成
   const [usdzUrl, setUsdzUrl] = useState<string>('');

@@ -25,8 +25,6 @@ const Title = styled.h1`
   text-align: center;
 `;
 
-const Text = styled.p``;
-
 const LinkButton = styled.button`
   display: flex;
   justify-content: center;
@@ -48,7 +46,7 @@ const NotUpload: FC<Props> = ({ message }) => {
   return (
     <NotUploadContainer>
       <Title>{message.title}</Title>
-      <Text>{message.text}</Text>
+      <p>{message.text}</p>
       <Link href='/gallery'>
         <LinkButton>
           <svg xmlns='http://www.w3.org/2000/svg' width='1em' height='1em' viewBox='0 0 16 16'>

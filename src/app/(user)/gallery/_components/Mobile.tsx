@@ -47,14 +47,16 @@ const Mobile: FC<Props> = ({ items }) => {
     const width = window.innerWidth;
     const cardWidth = width * 1.11;
     const cardWidthArray = [];
-    for (let i = 0; i < 35; i++) {
+    const cardLength = items.length;
+    for (let i = 0; i < cardLength; i++) {
       cardWidthArray.push(cardWidth * i);
     }
     setCardWidths(cardWidthArray);
-  }, []);
+  }, [items]);
 
   const choiceNowItem = (closest: number) => {
-    if (closest === -457.32000000000005) return setNowItem(items[0]);
+    const minusWidth = -457.32000000000005;
+    if (closest === minusWidth) return setNowItem(items[0]);
     const index = cardWidths.indexOf(closest);
     setNowItem(items[index]);
   };
@@ -119,7 +121,7 @@ const Mobile: FC<Props> = ({ items }) => {
         });
         setIsMiniScroll(true);
       }
-    }, 30);
+    }, 40);
 
     setScrollTimeoutId(newTimeoutId);
   };
