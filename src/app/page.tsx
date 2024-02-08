@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import { googleLogout } from '../features/auth';
 import Card from './_components/Card';
 import { getLang, en } from './_components/i18n';
 import { TypeHome } from './_components/types/home';
@@ -47,7 +46,6 @@ export default function Home() {
         <Title>{lang.title}</Title>
         <Text>{lang.text}</Text>
       </Head>
-      <div onClick={googleLogout}>google Logout</div>
       <CardContainer>
         {lang.cards.map((card, index) => (
           <Card key={index} img={card.img} text={card.text} arrow={card.arrow} link={card.link} />
