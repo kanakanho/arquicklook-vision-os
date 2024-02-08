@@ -12,8 +12,8 @@ const Item = styled.div`
   display: flex;
   flex-direction: column;
 
-  border-radius: 50px;
-  border: 2px solid #666;
+  border-radius: 20px;
+  box-shadow: 0 0 10px orange;
 
   overflow: hidden;
   &:hover {
@@ -29,8 +29,8 @@ const CardThumbnail = styled.img`
 
 const TextContainer = styled.div`
   padding: 10px 0;
-  background-color: #ddd;
-  border-radius: 0 0 50px 50px;
+  background-color: #eee;
+  border-radius: 0 0 16px 16px;
   border: 5px solid rgba(255, 255, 255, 0.5);
   flex: 1;
 `;

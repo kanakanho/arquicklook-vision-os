@@ -12,7 +12,7 @@ const CardContainer = styled.div<{ isCose: string }>`
   padding: 75px 0;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 50px;
+  gap: 70px;
   opacity: ${(props) => (props.isCose === 'true' ? '0.4' : '1')};
 
   @media screen and (max-width: 1400px) {
