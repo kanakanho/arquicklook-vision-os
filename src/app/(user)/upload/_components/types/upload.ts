@@ -20,6 +20,8 @@ export type TypeInput = {
 export type Alert = {
   filetype: string;
   onedrop: string;
+  success: string;
+  failed: string;
 };
 
 export type SmartPhone = {

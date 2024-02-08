@@ -29,11 +29,13 @@ const InputText = styled.input`
 `;
 
 const Input: FC<Props> = ({ setItem, card }) => {
+  
+  // eslint-disable-next-line no-unused-vars
   const [text, setText] = useState<string>('');
 
   const changeText = (event: ChangeEvent<HTMLInputElement>) => {
     setText(event.target.value);
-    setItem(text);
+    setItem(event.target.value);
   };
 
   return (

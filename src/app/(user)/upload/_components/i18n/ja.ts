@@ -35,6 +35,8 @@ const ja: TypeUpload = {
   alert: {
     filetype: 'ファイル形式が正しくありません',
     onedrop: 'アップロードできるファイルは1つまでです',
+    success: 'アップロードに成功しました,ギャラリーに遷移します',
+    failed: 'アップロードに失敗しました、もう一度お試しください。',
   },
   send: 'データを送信',
   smartphone: {

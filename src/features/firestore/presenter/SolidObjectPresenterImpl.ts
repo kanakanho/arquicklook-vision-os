@@ -19,70 +19,67 @@ export class SolidObjectPresenterImpl implements SolidObjectPresenter {
         switch (solidObjectSortList) {
           case SolidObjectSortList.DATE_NEWEST:
             return resolve(
-              value.sort((a, b) => {
-                let aFromDate = new Date(a.date);
-                let bFromDate = new Date(b.date);
+              (value.data || []).sort((a, b) => {
+                let aFromDate = new Date((a as SolidObject).date);
+                let bFromDate = new Date((b as SolidObject).date);
                 return aFromDate < bFromDate ? 1 : -1;
               }),
             );
           case SolidObjectSortList.DATE_OLDEST:
             return resolve(
-              value.sort((a, b) => {
-                let aFromDate = new Date(a.date);
-                let bFromDate = new Date(b.date);
+              (value.data || []).sort((a, b) => {
+                let aFromDate = new Date((a as SolidObject).date);
+                let bFromDate = new Date((b as SolidObject).date);
                 return aFromDate > bFromDate ? 1 : -1;
               }),
             );
           case SolidObjectSortList.NAME_A_Z:
             return resolve(
-              value.sort((a, b) => {
-                return a.modelName.localeCompare(b.modelName);
+              (value.data || []).sort((a, b) => {
+                return (a as SolidObject).modelName.localeCompare((b as SolidObject).modelName);
               }),
             );
           case SolidObjectSortList.NAME_Z_A:
             return resolve(
-              value.sort((a, b) => {
-                return b.modelName.localeCompare(a.modelName);
+              (value.data || []).sort((a, b) => {
+                return (b as SolidObject).modelName.localeCompare((a as SolidObject).modelName);
               }),
             );
           case SolidObjectSortList.USER_A_Z:
             return resolve(
-              value.sort((a, b) => {
-                return a.user.localeCompare(b.user);
+              (value.data || []).sort((a, b) => {
+                return (a as SolidObject).user.localeCompare((b as SolidObject).user);
               }),
             );
           case SolidObjectSortList.USER_Z_A:
             return resolve(
-              value.sort((a, b) => {
-                return b.user.localeCompare(a.user);
+              (value.data || []).sort((a, b) => {
+                return (b as SolidObject).user.localeCompare((a as SolidObject).user);
               }),
             );
           case SolidObjectSortList.COUNT_LARGEST:
             return resolve(
-              value.sort((a, b) => {
-                return b.count - a.count;
+              (value.data || []).sort((a, b) => {
+                return (b as SolidObject).count - (a as SolidObject).count;
               }),
             );
           case SolidObjectSortList.COUNT_SMALLEST:
             return resolve(
-              value.sort((a, b) => {
-                return a.count - b.count;
+              (value.data || []).sort((a, b) => {
+                return (a as SolidObject).count - (b as SolidObject).count;
               }),
             );
           default:
-            return resolve(value);
+            return resolve(value.data || []);
         }
       });
     });
   }
 
   fetchSolidObject(id: string): Promise<SolidObject | undefined> {
-    return new Promise((resolve, reject) => {
+    return new Promise((resolve) => {
       this.solidObjectFirestoreApi.getSolidObject(id).then((value) => {
-        if (value && value.length > 0) {
-          return resolve(value[0]);
-        }
-        return reject(new Error('SolidObject not found.'));
+        return resolve(value.data || {} as SolidObject);
       });
     });
   }

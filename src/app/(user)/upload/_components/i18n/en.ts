@@ -35,6 +35,8 @@ const en: TypeUpload = {
   alert: {
     filetype: 'The file format is incorrect',
     onedrop: 'You can upload only one file',
+    success: 'Upload successful and will transition to the gallery.',
+    failed: 'Upload failed',
   },
   send: 'Send',
   smartphone: {
