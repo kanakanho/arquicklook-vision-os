@@ -1,6 +1,6 @@
-import { SolidObject } from '../../../types/SolidObject';
+
 import { SolidObjectSortList } from '../types/SolidObjectSortList';
-import { demoData } from '@/src/types/SolidObject';
+import { SolidObject, demoData } from '@/src/types/SolidObject';
 
 /* eslint-disable no-unused-vars */
 export interface SolidObjectPresenter {

@@ -76,7 +76,7 @@ const InputFile: FC<Props> = ({ setItem, question, alert, inputFileType }) => {
         .then((result) => {
           if (result !== '') {
             setUrl(result);
-            setItem(url);
+            setItem(result);
             setIsComplete(true);
           } else {
             window.alert(question.failed);

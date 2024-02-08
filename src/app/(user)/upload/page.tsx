@@ -8,7 +8,9 @@ import Input from './_components/Input';
 import InputFile from './_components/InputFile';
 import { getLang, en } from './_components/i18n';
 import { TypeUpload } from './_components/types/upload';
+import { SolidObjectPresenterImpl } from '@/src/features/firestore/presenter/SolidObjectPresenterImpl';
 import { useLoginMutators, useLoginState } from '@/src/state/login';
+import { UploadSolidObject } from '@/src/types/UploadSolidObject';
 import { auth } from '@/src/utils/firebase';
 
 const FormContainer = styled.div`
@@ -66,6 +68,17 @@ const Upload: FC = () => {
   const [description, setDescription] = useState<string>('');
 
   const sendData = () => {
+    const solidObjectPresenter = new SolidObjectPresenterImpl();
+
+    const uploadSolidObject = {
+      usdz: usdzUrl,
+      image: pngUrl,
+      modelName: name,
+      description: description,
+    } as UploadSolidObject;
+    
+    solidObjectPresenter.createSolidObject(uploadSolidObject);
+
     console.log('送信するデータ', usdzUrl, pngUrl, name, description);
   };
 
