@@ -1,7 +1,6 @@
 'use client';
-import { FC, useEffect, useState } from 'react';
+import { FC, useState } from 'react';
 import { styled } from 'styled-components';
-import { useIsCardChangeState } from '@/src/state/cardChange';
 
 type Props = {
   description: string;
@@ -26,15 +25,6 @@ const SetOpenButton = styled.button`
 
 const MobileDescription: FC<Props> = ({ description }) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
-  const isCardChange = useIsCardChangeState();
-
-  useEffect(() => {
-    if (isCardChange) {
-      setTimeout(() => {
-        setIsOpen(false);
-      }, 400);
-    }
-  }, [isCardChange]);
 
   return (
     <DescriptionContainer>

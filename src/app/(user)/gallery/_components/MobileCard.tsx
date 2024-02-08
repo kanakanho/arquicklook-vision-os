@@ -1,9 +1,8 @@
 'use client';
 
-import { FC, useEffect } from 'react';
+import { FC } from 'react';
 import { styled } from 'styled-components';
 import MobileDescription from './MobileDescription';
-import { useIsCardChangeState } from '@/src/state/cardChange';
 import { SolidObject } from '@/src/types/SolidObject';
 
 type Props = {
@@ -103,16 +102,6 @@ const ViewCount = styled.p`
 
 const MobileCard: FC<Props> = ({ item }) => {
   const date = item.date.toLocaleDateString();
-  const isCardChange = useIsCardChangeState();
-  useEffect(() => {
-    if (isCardChange) {
-      // 一番上にスクロール
-      window.scrollTo({
-        top: 0,
-        behavior: 'smooth',
-      });
-    }
-  }, [isCardChange]);
 
   return (
     <Item>
