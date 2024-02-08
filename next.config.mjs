@@ -3,12 +3,14 @@ const nextConfig = {
   compiler: {
     styledComponents: true,
   },
-  rewrites: [
-    {
-      source: "/__/auth/:slug*",
-      destination: `https://${process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID}/__/auth/:slug*`,  
-    },
-  ],
+  async rewrites() {
+    return [
+      {
+        source: '/__/auth/:path*',
+        destination: `https://${process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN}/__/auth/:path*`,
+      },
+    ];
+  },
 };
 
 export default nextConfig;
