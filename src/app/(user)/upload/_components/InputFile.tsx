@@ -57,6 +57,8 @@ const Text = styled.p`
   font-size: 24px;
 `;
 const InputFile: FC<Props> = ({ setItem, question, alert, inputFileType }) => {
+  
+  // eslint-disable-next-line no-unused-vars
   const [url, setUrl] = useState<string>('');
   const [isComplete, setIsComplete] = useState<boolean>(false);
 

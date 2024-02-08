@@ -78,8 +78,6 @@ const Upload: FC = () => {
     } as UploadSolidObject;
     
     solidObjectPresenter.createSolidObject(uploadSolidObject);
-
-    console.log('送信するデータ', usdzUrl, pngUrl, name, description);
   };
 
   if (isSmartphone) {
