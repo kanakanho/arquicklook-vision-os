@@ -5,8 +5,20 @@
 }
 
 html,
+* {
+  transition: 0.5s;
+}
+
 body {
   margin: 0;
+}
+
+svg {
+  transition: none;
+}
+
+path {
+  transition: none;
 }
 
 a {
