@@ -8,7 +8,13 @@ import {
   getFirestore,
   updateDoc,
 } from 'firebase/firestore';
-import { SolidObjectCreateStatus, SolidObjectDeleteStatus, SolidObjectGetStatus, SolidObjectGetsStatus, SolidObjectUpdateStatus,  } from '../types/SolidObjectStatus';
+import {
+  SolidObjectCreateStatus,
+  SolidObjectDeleteStatus,
+  SolidObjectGetStatus,
+  SolidObjectGetsStatus,
+  SolidObjectUpdateStatus,
+} from '../types/SolidObjectStatus';
 import { SolidObject } from '@/src/types/SolidObject';
 import { app } from '@/src/utils/firebase';
 
@@ -23,14 +29,15 @@ export class SolidObjectFirestoreApi {
   async createSolidObject(solidObject: SolidObject): Promise<SolidObjectCreateStatus> {
     return await addDoc(collection(this.db, this.collectionName), solidObject)
       .then((docRef) => {
-        return { 
+        return {
           isSuccess: true,
-          data: docRef 
+          data: docRef,
         } as SolidObjectCreateStatus;
-      }).catch(() => {
+      })
+      .catch(() => {
         return {
           isSuccess: false,
-          data: null
+          data: null,
         } as SolidObjectCreateStatus;
       });
   }
@@ -44,12 +51,13 @@ export class SolidObjectFirestoreApi {
         });
         return {
           isSuccess: true,
-          data: solidObjects
+          data: solidObjects,
         } as SolidObjectGetsStatus;
-      }).catch(() => {
+      })
+      .catch(() => {
         return {
           isSuccess: false,
-          data: null
+          data: null,
         } as SolidObjectGetsStatus;
       });
   }
@@ -71,7 +79,8 @@ export class SolidObjectFirestoreApi {
           docId: docId,
           data: solidObject,
         } as SolidObjectGetStatus;
-      }).catch(() => {
+      })
+      .catch(() => {
         return {
           isSuccess: false,
           docId: '',
@@ -83,51 +92,51 @@ export class SolidObjectFirestoreApi {
   // ここはTry-Catchでエラー処理を行う方がコードが短くなってよさそう
   async updateSolidObject(solidObject: SolidObject, id: string): Promise<SolidObjectUpdateStatus> {
     try {
-        const oldSolidObject = await this.getSolidObject(id);
-        const docId = oldSolidObject?.docId;
-
-        if (!docId) {
-            // docIdが存在しない場合は何もせずに終了
-            return {
-                isSuccess: false,
-            } as SolidObjectUpdateStatus;
-        }
-
-        const washingtonRef = doc(this.db, this.collectionName, docId);
-        await updateDoc(washingtonRef, solidObject);
-        return {
-            isSuccess: true,
-        } as SolidObjectUpdateStatus;
-    } catch (error) {
-        console.error("Failed to update solid object:", error);
-        return {
-            isSuccess: false,
-        } as SolidObjectUpdateStatus;
-    }
-}
-
-async deleteSolidObject(id: string): Promise<SolidObjectDeleteStatus> {
-  try {
       const oldSolidObject = await this.getSolidObject(id);
       const docId = oldSolidObject?.docId;
 
       if (!docId) {
-          // docIdが存在しない場合は何もせずに終了
-          return {
-              isSuccess: false,
-          } as SolidObjectDeleteStatus;
+        // docIdが存在しない場合は何もせずに終了
+        return {
+          isSuccess: false,
+        } as SolidObjectUpdateStatus;
+      }
+
+      const washingtonRef = doc(this.db, this.collectionName, docId);
+      await updateDoc(washingtonRef, solidObject);
+      return {
+        isSuccess: true,
+      } as SolidObjectUpdateStatus;
+    } catch (error) {
+      console.error('Failed to update solid object:', error);
+      return {
+        isSuccess: false,
+      } as SolidObjectUpdateStatus;
+    }
+  }
+
+  async deleteSolidObject(id: string): Promise<SolidObjectDeleteStatus> {
+    try {
+      const oldSolidObject = await this.getSolidObject(id);
+      const docId = oldSolidObject?.docId;
+
+      if (!docId) {
+        // docIdが存在しない場合は何もせずに終了
+        return {
+          isSuccess: false,
+        } as SolidObjectDeleteStatus;
       }
 
       await deleteDoc(doc(this.db, this.collectionName, docId));
 
       return {
-          isSuccess: true,
+        isSuccess: true,
       } as SolidObjectDeleteStatus;
-  } catch (error) {
+    } catch (error) {
       // エラーが発生した場合は適切に処理する（ログ出力など）
-      console.error("Failed to delete solid object:", error);
+      console.error('Failed to delete solid object:', error);
       return {
-          isSuccess: false,
+        isSuccess: false,
       } as SolidObjectDeleteStatus;
     }
   }

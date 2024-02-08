@@ -79,7 +79,7 @@ export class SolidObjectPresenterImpl implements SolidObjectPresenter {
   fetchSolidObject(id: string): Promise<SolidObject | undefined> {
     return new Promise((resolve) => {
       this.solidObjectFirestoreApi.getSolidObject(id).then((value) => {
-        return resolve(value.data || {} as SolidObject);
+        return resolve(value.data || ({} as SolidObject));
       });
     });
   }

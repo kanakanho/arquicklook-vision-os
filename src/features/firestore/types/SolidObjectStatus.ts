@@ -1,26 +1,26 @@
-import { DocumentData, DocumentReference } from "firebase/firestore";
-import { SolidObject } from "@/src/types/SolidObject";
+import { DocumentData, DocumentReference } from 'firebase/firestore';
+import { SolidObject } from '@/src/types/SolidObject';
 
 export type SolidObjectCreateStatus = {
-    isSuccess: boolean;
-    data: DocumentReference<SolidObject, DocumentData> | null;
+  isSuccess: boolean;
+  data: DocumentReference<SolidObject, DocumentData> | null;
 };
 
 export type SolidObjectGetStatus = {
-    isSuccess: boolean;
-    docId: string;
-    data: SolidObject | null;
+  isSuccess: boolean;
+  docId: string;
+  data: SolidObject | null;
 };
 
 export type SolidObjectGetsStatus = {
-    isSuccess: boolean;
-    data: SolidObject[] | null;
+  isSuccess: boolean;
+  data: SolidObject[] | null;
 };
 
 export type SolidObjectUpdateStatus = {
-    isSuccess: boolean;
+  isSuccess: boolean;
 };
 
 export type SolidObjectDeleteStatus = {
-    isSuccess: boolean;
+  isSuccess: boolean;
 };

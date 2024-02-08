@@ -1,4 +1,3 @@
-
 import { SolidObjectSortList } from '../types/SolidObjectSortList';
 import { SolidObject, demoData } from '@/src/types/SolidObject';
 

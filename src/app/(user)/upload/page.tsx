@@ -76,14 +76,15 @@ const Upload: FC = () => {
       modelName: name,
       description: description,
     } as UploadSolidObject;
-    
-    solidObjectPresenter.createSolidObject(uploadSolidObject)
+
+    solidObjectPresenter
+      .createSolidObject(uploadSolidObject)
       .then(() => {
         alert(lang.alert.success);
         router.push('/gallery');
       })
       .catch((error) => {
-        alert(lang.alert.failed)
+        alert(lang.alert.failed);
         console.error(error);
       });
   };
