@@ -5,8 +5,8 @@ const nextConfig = {
   },
   rewrites: [
     {
-      source: "/__/auth/:path*",
-      destination: `https://${process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID}/__/auth/:path*`,  
+      source: "/__/auth/:slug*",
+      destination: `https://${process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID}/__/auth/:slug*`,  
     },
   ],
 };
