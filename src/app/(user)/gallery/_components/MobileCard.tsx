@@ -19,9 +19,7 @@ const Item = styled.div`
   box-shadow: 0 0 10px orange;
 
   overflow: hidden;
-  &:hover {
-    cursor: pointer;
-  }
+  cursor: pointer;
 `;
 
 const LinkBox = styled.div`

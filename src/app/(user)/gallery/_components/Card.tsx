@@ -16,9 +16,7 @@ const Item = styled.div`
   border: 2px solid #666;
 
   overflow: hidden;
-  &:hover {
-    cursor: pointer;
-  }
+  cursor: pointer;
 `;
 
 const CardThumbnail = styled.img`
