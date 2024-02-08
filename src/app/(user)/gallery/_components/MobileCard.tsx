@@ -13,18 +13,14 @@ const Item = styled.div`
   display: flex;
   flex-direction: column;
 
-  border-radius: 50px;
-  border: 2px solid #666;
+  width: 90vw;
+  border-radius: 16px;
+  border: 2px solid transparent;
+  box-shadow: 0 0 10px orange;
 
   overflow: hidden;
   &:hover {
     cursor: pointer;
-  }
-  @media screen and (max-width: 500px) {
-    width: 90vw;
-    border-radius: 16px;
-    border: 2px solid transparent;
-    box-shadow: 0 0 10px orange;
   }
 `;
 
@@ -41,15 +37,11 @@ const CardThumbnail = styled.img`
 `;
 
 const TextContainer = styled.div`
-  padding: 10px 0;
-  background-color: #ddd;
-  border-radius: 0 0 50px 50px;
+  padding: 5px;
+  background-color: #e6e6e6;
+  border-radius: 0 0 16px 16px;
   border: 5px solid rgba(255, 255, 255, 0.5);
   flex: 1;
-  @media screen and (max-width: 500px) {
-    padding: 5px;
-    border-radius: 0 0 16px 16px;
-  }
 `;
 
 const ModelName = styled.h2`
@@ -68,16 +60,13 @@ const UserName = styled.h3`
 `;
 
 const AdditionalInfo = styled.div`
-  padding: 10px 25px 0 25px;
+  padding: 0 10px;
   display: flex;
   justify-content: space-between;
   align-items: center;
 
   svg {
     padding: 0 5px;
-  }
-  @media screen and (max-width: 500px) {
-    padding: 0 10px;
   }
 `;
 

@@ -1,6 +1,6 @@
 'use client';
 
-import React, { FC} from 'react';
+import React, { FC } from 'react';
 import { styled } from 'styled-components';
 import MobileCard from '../_components/MobileCard';
 import { SolidObject } from '@/src/types/SolidObject';
@@ -31,9 +31,8 @@ const CardContainer = styled.div`
 `;
 
 const Mobile: FC<Props> = ({ items }) => {
-
   return (
-    <MobileContainer >
+    <MobileContainer>
       <CardContainer>
         {items.map((item: SolidObject) => (
           <MobileCard item={item} key={item.id} />
