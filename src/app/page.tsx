@@ -2,10 +2,10 @@
 
 import { useEffect, useState } from 'react';
 import styled from 'styled-components';
+import { googleLogout } from '../features/auth';
 import Card from './_components/Card';
 import { getLang, en } from './_components/i18n';
 import { TypeHome } from './_components/types/home';
-import { googleLogout } from '../features/auth';
 
 const HomeContainer = styled.div``;
 
