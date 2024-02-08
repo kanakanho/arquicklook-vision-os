@@ -3,7 +3,7 @@
 import { useRouter } from 'next/navigation';
 import { FC, useEffect } from 'react';
 import { styled } from 'styled-components';
-import { googleLogin } from '@/src/features/auth';
+import { googleLogin, googleLogout } from '@/src/features/auth';
 import { auth } from '@/src/utils/firebase';
 
 const LoginWrapper = styled.div`
@@ -53,10 +53,30 @@ const Page: FC = () => {
     googleLogin();
   };
 
+  const logout = () => {
+    googleLogout();
+    router.push('/');
+  };
+
   return (
     <LoginWrapper>
       <LoginContainer onClick={login}>
         <Text>Login With Google</Text>
+        <IconWrapper>
+          <svg xmlns='http://www.w3.org/2000/svg' width='48' height='48' viewBox='0 0 16 16'>
+            <path
+              fill='none'
+              stroke='currentColor'
+              strokeLinecap='round'
+              strokeLinejoin='round'
+              strokeWidth='1.5'
+              d='m8.75 3.25l4.5 4.5l-4.5 4.5m-6-4.5h10.5'
+            />
+          </svg>
+        </IconWrapper>
+      </LoginContainer>
+      <LoginContainer onClick={logout}>
+        <Text>Logout With Google</Text>
         <IconWrapper>
           <svg xmlns='http://www.w3.org/2000/svg' width='48' height='48' viewBox='0 0 16 16'>
             <path

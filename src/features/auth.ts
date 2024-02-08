@@ -17,7 +17,7 @@ export const googleLogin = async (): Promise<void> => {
   });
 };
 
-export const logout = async (): Promise<void> => {
+export const googleLogout = async (): Promise<void> => {
   signOut(auth).catch((error) => {
     console.error(error);
   });
