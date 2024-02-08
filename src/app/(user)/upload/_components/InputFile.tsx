@@ -49,10 +49,6 @@ const Image = styled.img`
   opacity: 0.6;
   overflow: hidden;
   z-index: -1;
-  @media screen and (max-width: 1100px) {
-    width: 300px;
-    height: 200px;
-  }
 `;
 
 const Text = styled.p`

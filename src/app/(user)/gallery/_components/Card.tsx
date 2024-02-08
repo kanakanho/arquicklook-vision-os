@@ -13,11 +13,13 @@ const Item = styled.div`
   flex-direction: column;
 
   border-radius: 20px;
-  box-shadow: 0 0 10px orange;
+  box-shadow: 0 2px 10px #999;
 
   overflow: hidden;
+  cursor: pointer;
+
   &:hover {
-    cursor: pointer;
+    box-shadow: 0 0 14px orange;
   }
 `;
 
