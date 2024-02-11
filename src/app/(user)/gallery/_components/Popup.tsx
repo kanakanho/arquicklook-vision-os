@@ -4,7 +4,7 @@ import { styled } from 'styled-components';
 import { SolidObject } from '@/src/types/SolidObject';
 
 type Props = {
-  item: SolidObject;
+  item: SolidObject | null;
   // eslint-disable-next-line no-unused-vars
   setChose: (isChose: boolean) => void;
 };
@@ -117,6 +117,9 @@ const ViewCount = styled.p`
 `;
 
 const Popup: FC<Props> = ({ item, setChose }) => {
+  if (!item) {
+    return null;
+  }
   const date = item.date.toLocaleDateString();
   return (
     <PopupContainer>
