@@ -44,7 +44,6 @@ const Background = styled.div`
 `;
 
 const Gallery: FC = () => {
-
   const [items, setItems] = useState<SolidObject[]>([]);
   const [sort, setSort] = useState<Sort>('latest');
   const [isSmartphone, setIsSmartphone] = useState<boolean>(false);
@@ -72,14 +71,16 @@ const Gallery: FC = () => {
   useEffect(() => {
     const solidObjectPresenter = new SolidObjectPresenterImpl();
     if (sort === 'latest') {
-      solidObjectPresenter.fetchSolidObjects(SolidObjectSortList.DATE_NEWEST)
+      solidObjectPresenter
+        .fetchSolidObjects(SolidObjectSortList.DATE_NEWEST)
         .then((items: SolidObject[]) => {
-          setItems(items)
+          setItems(items);
         });
     } else {
-      solidObjectPresenter.fetchSolidObjects(SolidObjectSortList.COUNT_LARGEST)
+      solidObjectPresenter
+        .fetchSolidObjects(SolidObjectSortList.COUNT_LARGEST)
         .then((items: SolidObject[]) => {
-          setItems(items)
+          setItems(items);
         });
     }
   }, [sort]);

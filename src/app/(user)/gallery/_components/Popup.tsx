@@ -120,9 +120,6 @@ const Popup: FC<Props> = ({ item, setChose }) => {
   if (!item) {
     return null;
   }
-
-  console.log(typeof(item))
-
   const date = new Date(item.date).toLocaleDateString();
   return (
     <PopupContainer>
