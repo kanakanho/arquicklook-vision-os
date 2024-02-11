@@ -36,6 +36,7 @@ const CardContainer = styled.div<{ $isChose: string }>`
     margin: 0 50px;
   }
 `;
+
 const Background = styled.div`
   position: fixed;
   top: 0;
