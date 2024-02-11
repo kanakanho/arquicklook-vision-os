@@ -36,8 +36,12 @@ const CardContainer = styled.div`
 
 export default function Home() {
   const [lang, setLang] = useState<TypeHome>(en);
+  const [isSmartphone, setIsSmartphone] = useState<boolean>(false);
   useEffect(() => {
     setLang(getLang());
+    if (navigator.userAgent.match(/(iPhone|iPod|Android)/i)) {
+      setIsSmartphone(true);
+    }
   }, []);
 
   return (
@@ -47,9 +51,12 @@ export default function Home() {
         <Text>{lang.text}</Text>
       </Head>
       <CardContainer>
-        {lang.cards.map((card, index) => (
-          <Card key={index} img={card.img} text={card.text} arrow={card.arrow} link={card.link} />
-        ))}
+        {lang.cards.map((card, index) => {
+          if (isSmartphone && index === 0) return;
+          return (
+            <Card key={index} img={card.img} text={card.text} arrow={card.arrow} link={card.link} />
+          );
+        })}
       </CardContainer>
     </HomeContainer>
   );

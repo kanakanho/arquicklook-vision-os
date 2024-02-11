@@ -1,34 +1,43 @@
+'use client';
+
 import { FC } from 'react';
 import { styled } from 'styled-components';
+import MobileDescription from './MobileDescription';
 import { SolidObject } from '@/src/types/SolidObject';
 
 type Props = {
   item: SolidObject;
-  // eslint-disable-next-line no-unused-vars
-  choseItem: (id: string) => void;
 };
 
 const Item = styled.div`
   display: flex;
   flex-direction: column;
 
-  border-radius: 50px;
-  border: 2px solid #666;
+  width: 90vw;
+  border-radius: 16px;
+  border: 2px solid transparent;
+  box-shadow: 0 0 10px orange;
 
   overflow: hidden;
   cursor: pointer;
 `;
 
-const CardThumbnail = styled.img`
+const LinkBox = styled.div`
   width: auto;
   height: 400px;
-  object-fit: cover;
+  overflow: hidden;
+`;
+
+const CardThumbnail = styled.img`
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 `;
 
 const TextContainer = styled.div`
-  padding: 10px 0;
-  background-color: #ddd;
-  border-radius: 0 0 50px 50px;
+  padding: 5px;
+  background-color: #e6e6e6;
+  border-radius: 0 0 16px 16px;
   border: 5px solid rgba(255, 255, 255, 0.5);
   flex: 1;
 `;
@@ -49,7 +58,7 @@ const UserName = styled.h3`
 `;
 
 const AdditionalInfo = styled.div`
-  padding: 10px 25px 0 25px;
+  padding: 0 10px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -78,14 +87,20 @@ const ViewCount = styled.p`
   }
 `;
 
-const Card: FC<Props> = ({ item, choseItem }) => {
+const MobileCard: FC<Props> = ({ item }) => {
   const date = item.date.toLocaleDateString();
+
   return (
-    <Item onClick={() => choseItem(item.id)}>
-      <CardThumbnail src={item.image} alt={item.modelName} />
+    <Item>
+      <LinkBox>
+        <a rel='ar' href={item.usdz}>
+          <CardThumbnail src={item.image} alt={item.modelName} />
+        </a>
+      </LinkBox>
       <TextContainer>
         <ModelName>{item.modelName}</ModelName>
         <UserName>{item.user}</UserName>
+        <MobileDescription description={item.description} />
         <AdditionalInfo>
           <DateText>{date}</DateText>
           <ViewCount>
@@ -103,4 +118,4 @@ const Card: FC<Props> = ({ item, choseItem }) => {
   );
 };
 
-export default Card;
+export default MobileCard;

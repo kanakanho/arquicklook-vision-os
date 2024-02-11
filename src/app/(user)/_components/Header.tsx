@@ -14,6 +14,10 @@ const HeaderContainer = styled.header`
   position: sticky;
   top: 0;
   z-index: 2;
+
+  @media screen and (max-width: 600px) {
+    font-size: 18px;
+  }
 `;
 
 const Header: FC = () => {

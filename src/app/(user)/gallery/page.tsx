@@ -4,31 +4,37 @@ import React, { FC, useEffect, useState } from 'react';
 import { styled } from 'styled-components';
 import Card from './_components/Card';
 import Filter from './_components/Filter';
+import Mobile from './_components/Mobile';
 import Popup from './_components/Popup';
 import demo from './_components/i18n/demo';
 import { SolidObject } from '@/src/types/SolidObject';
 
 export type Sort = 'latest' | 'popular';
-type isChose = string;
 
 const GalleryContaier = styled.div`
   margin: 0 10%;
+
   @media screen and (max-width: 1400px) {
     margin: 0 50px;
   }
 `;
 
-const FilterContainer = styled.div<{ $isChose: isChose }>`
+const FilterContainer = styled.div<{ $isChose: string }>`
   margin: 25px 0;
   opacity: ${(props) => (props.$isChose === 'true' ? '0.4' : '1')};
 `;
 
-const CardContainer = styled.div<{ $isChose: isChose }>`
+const CardContainer = styled.div<{ $isChose: string }>`
+  margin: 0 10%;
   padding: 50px 0;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 50px;
   opacity: ${(props) => (props.$isChose === 'true' ? '0.4' : '1')};
+
+  @media screen and (max-width: 1400px) {
+    margin: 0 50px;
+  }
 `;
 
 const Background = styled.div`
@@ -43,6 +49,7 @@ const Background = styled.div`
 const Gallery: FC = () => {
   const [items, setItems] = useState<SolidObject[]>(demo);
   const [sort, setSort] = useState<Sort>('latest');
+  const [isSmartphone, setIsSmartphone] = useState<boolean>(false);
   const [isChose, setChose] = useState<boolean>(false);
   const [itemId, setId] = useState<string>('');
   const [chosenItem, setItem] = useState<SolidObject | null>(null);
@@ -55,6 +62,9 @@ const Gallery: FC = () => {
     const foundItem = items.find((item: SolidObject) => item.id === itemId);
     if (foundItem) {
       setItem(foundItem);
+    }
+    if (navigator.userAgent.match(/(iPhone|iPod|Android)/i)) {
+      setIsSmartphone(true);
     }
   }, [itemId, items]);
 
@@ -76,6 +86,10 @@ const Gallery: FC = () => {
       document.body.style.overflow = 'auto';
     }
   }, [isChose]);
+
+  if (isSmartphone) {
+    return <Mobile items={demo} />;
+  }
 
   return (
     <GalleryContaier>
