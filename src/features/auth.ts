@@ -1,12 +1,12 @@
 'use client';
 
-import { GoogleAuthProvider, signInWithRedirect, signOut } from 'firebase/auth';
+import { GoogleAuthProvider, signInWithPopup, signOut } from 'firebase/auth';
 import { auth } from '../utils/firebase';
 
 export const googleLogin = async (): Promise<void> => {
   const provider = new GoogleAuthProvider();
   new Promise<void>((resolve, reject) => {
-    signInWithRedirect(auth, provider)
+    signInWithPopup(auth, provider)
       .then(() => {
         resolve();
       })
@@ -17,7 +17,7 @@ export const googleLogin = async (): Promise<void> => {
   });
 };
 
-export const logout = async (): Promise<void> => {
+export const googleLogout = async (): Promise<void> => {
   signOut(auth).catch((error) => {
     console.error(error);
   });
