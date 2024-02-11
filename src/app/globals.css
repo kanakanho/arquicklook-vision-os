@@ -6,11 +6,20 @@
 
 html,
 * {
+  transition: 0.5s;
   font-family: 'Roboto', sans-serif;
 }
 
 body {
   margin: 0;
+}
+
+svg {
+  transition: none;
+}
+
+path {
+  transition: none;
 }
 
 a {

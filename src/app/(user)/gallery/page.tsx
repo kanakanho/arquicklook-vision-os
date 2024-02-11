@@ -13,6 +13,10 @@ export type Sort = 'latest' | 'popular';
 
 const GalleryContaier = styled.div`
   margin: 0 10%;
+  padding: 75px 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 70px;
 
   @media screen and (max-width: 1400px) {
     margin: 0 50px;
