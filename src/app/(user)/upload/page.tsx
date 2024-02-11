@@ -3,6 +3,7 @@
 import { useRouter } from 'next/navigation';
 import { FC, useEffect, useState } from 'react';
 import { styled } from 'styled-components';
+import NotUpload from './NotUpload';
 import Input from './_components/Input';
 import InputFile from './_components/InputFile';
 import { getLang, en } from './_components/i18n';
@@ -35,6 +36,7 @@ const Send = styled.div`
 
 const Upload: FC = () => {
   const [lang, setLang] = useState<TypeUpload>(en);
+  const [isSmartphone, setIsSmartphone] = useState<boolean>(false);
   const { setLoginPermissionState } = useLoginMutators();
   const isLogin = useLoginState();
   const router = useRouter();
@@ -51,6 +53,12 @@ const Upload: FC = () => {
     setLang(getLang());
   }, [router, isLogin, setLoginPermissionState]);
 
+  useEffect(() => {
+    if (navigator.userAgent.match(/(iPhone|iPod|Android)/i)) {
+      setIsSmartphone(true);
+    }
+  }, []);
+
   // 送信するデータの作成
   const [usdzUrl, setUsdzUrl] = useState<string>('');
   const [pngUrl, setPngUrl] = useState<string>('');
@@ -60,6 +68,10 @@ const Upload: FC = () => {
   const sendData = () => {
     console.log('送信するデータ', usdzUrl, pngUrl, name, description);
   };
+
+  if (isSmartphone) {
+    return <NotUpload message={lang.smartphone} />;
+  }
 
   return (
     <>

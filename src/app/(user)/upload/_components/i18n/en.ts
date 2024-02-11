@@ -37,6 +37,11 @@ const en: TypeUpload = {
     onedrop: 'You can upload only one file',
   },
   send: 'Send',
+  smartphone: {
+    title: 'Cannot upload from smartphone',
+    text: 'Please upload from PC or Vision Pro',
+    togallery: 'View gallery',
+  },
 };
 
 export default en;
