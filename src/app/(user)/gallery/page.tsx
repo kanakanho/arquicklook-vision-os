@@ -11,21 +11,13 @@ import { SolidObject } from '@/src/types/SolidObject';
 
 export type Sort = 'latest' | 'popular';
 
-const GalleryContaier = styled.div`
-  margin: 0 10%;
-  padding: 75px 0;
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 70px;
+const FilterContainer = styled.div<{ $isChose: string }>`
+  margin: 50px 10% 0 10%;
+  opacity: ${(props) => (props.$isChose === 'true' ? '0.4' : '1')};
 
   @media screen and (max-width: 1400px) {
-    margin: 0 50px;
+    margin: 50px 50px 0 50px;
   }
-`;
-
-const FilterContainer = styled.div<{ $isChose: string }>`
-  margin: 25px 0;
-  opacity: ${(props) => (props.$isChose === 'true' ? '0.4' : '1')};
 `;
 
 const CardContainer = styled.div<{ $isChose: string }>`
@@ -67,10 +59,13 @@ const Gallery: FC = () => {
     if (foundItem) {
       setItem(foundItem);
     }
+  }, [itemId, items]);
+
+  useEffect(() => {
     if (navigator.userAgent.match(/(iPhone|iPod|Android)/i)) {
       setIsSmartphone(true);
     }
-  }, [itemId, items]);
+  }, []);
 
   useEffect(() => {
     // 本番ではここでAPIを叩く
@@ -92,11 +87,11 @@ const Gallery: FC = () => {
   }, [isChose]);
 
   if (isSmartphone) {
-    return <Mobile items={demo} />;
+    return <Mobile items={items} />;
   }
 
   return (
-    <GalleryContaier>
+    <>
       {isChose && (
         <>
           <Background onClick={() => setChose(false)} />
@@ -111,7 +106,7 @@ const Gallery: FC = () => {
           return <Card key={item.id} item={item} choseItem={choseItem} />;
         })}
       </CardContainer>
-    </GalleryContaier>
+    </>
   );
 };
 
