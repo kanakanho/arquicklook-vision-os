@@ -6,7 +6,8 @@ import Card from './_components/Card';
 import Filter from './_components/Filter';
 import Mobile from './_components/Mobile';
 import Popup from './_components/Popup';
-import demo from './_components/i18n/demo';
+import { SolidObjectPresenterImpl } from '@/src/features/firestore/presenter/SolidObjectPresenterImpl';
+import { SolidObjectSortList } from '@/src/features/firestore/types/SolidObjectSortList';
 import { SolidObject } from '@/src/types/SolidObject';
 
 export type Sort = 'latest' | 'popular';
@@ -43,7 +44,8 @@ const Background = styled.div`
 `;
 
 const Gallery: FC = () => {
-  const [items, setItems] = useState<SolidObject[]>(demo);
+
+  const [items, setItems] = useState<SolidObject[]>([]);
   const [sort, setSort] = useState<Sort>('latest');
   const [isSmartphone, setIsSmartphone] = useState<boolean>(false);
   const [isChose, setChose] = useState<boolean>(false);
@@ -68,13 +70,17 @@ const Gallery: FC = () => {
   }, []);
 
   useEffect(() => {
-    // 本番ではここでAPIを叩く
+    const solidObjectPresenter = new SolidObjectPresenterImpl();
     if (sort === 'latest') {
-      console.log('新しい順で要求する（デフォルト）');
-      setItems(demo);
+      solidObjectPresenter.fetchSolidObjects(SolidObjectSortList.DATE_NEWEST)
+        .then((items: SolidObject[]) => {
+          setItems(items)
+        });
     } else {
-      console.log('人気順で要求する');
-      // setItems();
+      solidObjectPresenter.fetchSolidObjects(SolidObjectSortList.COUNT_LARGEST)
+        .then((items: SolidObject[]) => {
+          setItems(items)
+        });
     }
   }, [sort]);
 

@@ -100,7 +100,7 @@ const Items = styled.div`
   align-items: center;
 `;
 
-const Date = styled.p`
+const DateText = styled.p`
   margin: 0;
   font-size: 16px;
   font-weight: 400;
@@ -120,7 +120,10 @@ const Popup: FC<Props> = ({ item, setChose }) => {
   if (!item) {
     return null;
   }
-  const date = item.date.toLocaleDateString();
+
+  console.log(typeof(item))
+
+  const date = new Date(item.date).toLocaleDateString();
   return (
     <PopupContainer>
       <CloseButton onClick={() => setChose(false)}>
@@ -142,7 +145,7 @@ const Popup: FC<Props> = ({ item, setChose }) => {
         <Description>{item.description}</Description>
         <Spacer />
         <Items>
-          <Date>{date}</Date>
+          <DateText>{date}</DateText>
           <ViewCount>
             <svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 20 20'>
               <path

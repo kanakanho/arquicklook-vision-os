@@ -83,7 +83,7 @@ const ViewCount = styled.p`
 `;
 
 const Card: FC<Props> = ({ item, choseItem }) => {
-  const date = item.date.toLocaleDateString();
+  const date = new Date(item.date).toLocaleDateString();
   return (
     <Item onClick={() => choseItem(item.id)}>
       <CardThumbnail src={item.image} alt={item.modelName} />

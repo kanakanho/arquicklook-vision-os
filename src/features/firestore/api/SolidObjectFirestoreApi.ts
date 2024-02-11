@@ -8,6 +8,7 @@ import {
   getFirestore,
   updateDoc,
 } from 'firebase/firestore';
+import { Timestamp } from 'firebase-admin/firestore';
 import {
   SolidObjectCreateStatus,
   SolidObjectDeleteStatus,
@@ -47,7 +48,10 @@ export class SolidObjectFirestoreApi {
     return await getDocs(collection(this.db, this.collectionName))
       .then((querySnapshot) => {
         querySnapshot.forEach((doc) => {
-          solidObjects.push(doc.data() as SolidObject);
+          // timestamp型をDate型に変換
+          const solidObject = doc.data() as SolidObject;
+          solidObject.date = (solidObject.date as unknown as Timestamp).toDate();
+          solidObjects.push(solidObject);
         });
         return {
           isSuccess: true,
